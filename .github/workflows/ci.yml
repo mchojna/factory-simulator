@@ -1,0 +1,166 @@
+name: ci
+
+on:
+  push:
+    branches: [main, release/simulator, release/experiment]
+  pull_request:
+
+permissions:
+  contents: read
+
+# A new push to a pull request cancels its run in progress; every push to main or
+# a release branch gets a complete run.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  checks:
+    name: lint, format, types, tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: astral-sh/setup-uv@c18668ad3cf93ea998bef934396af7bb5c839dc7 # v10.2.0
+        with:
+          enable-cache: true
+          cache-dependency-glob: uv.lock
+
+      - name: Install
+        run: >-
+          uv sync --locked --group docs --group provider-anthropic
+          --group provider-google --group provider-openai --group provider-openrouter
+
+      - name: Import the base application without credentials
+        run: >-
+          env -u ANTHROPIC_API_KEY -u GOOGLE_API_KEY -u OPENAI_API_KEY
+          -u OPENROUTER_API_KEY uv run python -c "import factory_simulator.api.main,
+          factory_simulator.benchmark.client, factory_simulator.benchmark.optimizers.no_decisions"
+
+      - name: Format
+        run: uv run ruff format --check .
+
+      - name: Lint
+        run: uv run ruff check .
+
+      - name: Types
+        run: uv run pyright
+
+      - name: Documentation
+        run: bash scripts/build_docs.sh site/ci
+
+      # Runs every test but the properties and the slow tests, which the shards run,
+      # and reports the branch coverage of the package.
+      - name: Tests
+        run: >-
+          uv run pytest -m "not property and not slow and not stress"
+          --cov --cov-report=term-missing
+
+  properties:
+    name: properties and slow tests, group ${{ matrix.group }} of 8
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        group: [1, 2, 3, 4, 5, 6, 7, 8]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: astral-sh/setup-uv@c18668ad3cf93ea998bef934396af7bb5c839dc7 # v10.2.0
+        with:
+          enable-cache: true
+          cache-dependency-glob: uv.lock
+
+      - name: Install
+        run: >-
+          uv sync --locked --group provider-anthropic --group provider-google
+          --group provider-openai --group provider-openrouter
+
+      # pytest-split gives each group a share of equal time from .test_durations.
+      - name: Properties
+        run: >-
+          uv run pytest -m "property or slow" --splits 8 --group ${{ matrix.group }}
+          --splitting-algorithm least_duration -v
+
+  frozen-world:
+    name: frozen world on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: astral-sh/setup-uv@c18668ad3cf93ea998bef934396af7bb5c839dc7 # v10.2.0
+        with:
+          enable-cache: true
+          cache-dependency-glob: uv.lock
+
+      - name: Install
+        run: uv sync --locked
+
+      # numpy promises equal draws only on the same build and machine, and the
+      # normal and lognormal draws pass through the floating point of the system;
+      # the stored worlds, the stored draws at the bounds of every distribution and
+      # the stored generated manifest must come out byte for byte the same on every
+      # supported system.
+      - name: Frozen world
+        run: >-
+          uv run pytest -n 0 tests/unit/engine/draws/test_world.py
+          tests/unit/engine/draws/test_values.py
+          tests/unit/engine/test_generation.py -k "frozen and same"
+
+  package:
+    name: built package installs and imports
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: astral-sh/setup-uv@c18668ad3cf93ea998bef934396af7bb5c839dc7 # v10.2.0
+
+      # Builds the wheel, installs it into an empty environment and imports it.
+      - name: Build
+        run: uv build
+
+      - name: Install into an empty environment and import
+        run: |
+          uv venv --python 3.14 /tmp/clean
+          uv pip install --python /tmp/clean/bin/python dist/*.whl
+          /tmp/clean/bin/python -c "import factory_simulator"
+          /tmp/clean/bin/python -c "import factory_simulator.api.main, factory_simulator.benchmark.client, factory_simulator.benchmark.optimizers.no_decisions, factory_simulator.benchmark.optimizers.full_horizon, factory_simulator.benchmark.optimizers.rolling, factory_simulator.benchmark.optimizers.buffered_rolling, factory_simulator.benchmark.optimizers.aligned, factory_simulator.benchmark.optimizers.myopic, factory_simulator.benchmark.optimizers.informed, factory_simulator.benchmark.optimizers.reference"
+          /tmp/clean/bin/python -c "import importlib.util; assert all(importlib.util.find_spec(name) is None for name in ('anthropic', 'google', 'openai'))"
+          /tmp/clean/bin/python -c "from factory_simulator.api.services.examples import EXAMPLES; assert (EXAMPLES / 'manifest.json').is_file()"
+
+  hooks:
+    name: pre-commit
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: astral-sh/setup-uv@c18668ad3cf93ea998bef934396af7bb5c839dc7 # v10.2.0
+
+      - name: Install
+        run: uv sync --locked
+
+      - name: Run the hooks over every file
+        # The `checks` job runs ruff, pyright and pytest; `uv sync --locked` checks the
+        # lock.
+        env:
+          SKIP: ruff-format,ruff-check,pyright,pytest,uv-lock-check
+        run: uv run pre-commit run --all-files --show-diff-on-failure

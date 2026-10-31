@@ -1,0 +1,16 @@
+site_name: Factory simulator documentation hub
+site_url: https://mchojna.github.io/factory-simulator/documentation/
+docs_dir: docs/hub
+site_dir: site/documentation
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle: {icon: material/brightness-7, name: Dark theme}
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle: {icon: material/brightness-4, name: Light theme}
+  features: [navigation.sections, content.code.copy]
+nav:
+  - Documentation hub: README.md

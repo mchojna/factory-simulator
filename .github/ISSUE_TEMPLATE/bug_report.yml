@@ -1,0 +1,32 @@
+name: Bug report
+description: The simulator crashed, produced a wrong value, or behaved differently from its documentation.
+labels: [bug]
+body:
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: What you observed, with the exact error message or the wrong value.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+      description: The value or behavior you expected, and where it is described.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: How to reproduce
+      description: The smallest set of steps, inputs and seeds that shows the problem.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: The package version and, if you installed from source, the commit hash.
+    validations:
+      required: true

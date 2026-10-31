@@ -1,0 +1,21 @@
+{
+  "name": "full-warehouse",
+  "description": "The main plant is full with the usual starting stock value concentrated in enclosures, LCD panels, connector pins and copper wire. It has no other materials or components. Cable harness production can release space for missing inputs.",
+  "horizon": 52,
+  "start": {
+    "cash": "0.0000",
+    "stock": {
+      "main-plant": {
+        "lcd-panel": "820.615",
+        "connector-pins": "1554.000",
+        "copper-wire": "2823.000",
+        "enclosure": "6347.380"
+      },
+      "distribution-centre": {
+        "industrial-controller": "22.500",
+        "smart-monitor": "23.750",
+        "sensor-gateway": "20.000"
+      }
+    }
+  }
+}

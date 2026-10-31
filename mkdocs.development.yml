@@ -1,0 +1,4 @@
+INHERIT: mkdocs.yml
+
+hooks:
+  - scripts/exclude_readme.py

@@ -1,0 +1,342 @@
+{
+  "name": "Template scenario",
+  "description": "Every key of a scenario of the template factory, used at least once. The numbers are placeholders.",
+  "horizon": 12,
+  "start": {
+    "cash": "5000",
+    "condition": {
+      "assembly": "0.9000"
+    },
+    "set_for": {
+      "assembly": "board"
+    },
+    "stock": {
+      "main": {
+        "chip": "400",
+        "glass": "40",
+        "board": "20",
+        "panel": "20"
+      },
+      "centre": {
+        "monitor": "10"
+      }
+    },
+    "customer_orders": [
+      {
+        "customer": "distributor",
+        "product": "monitor",
+        "quantity": "5",
+        "due": 1
+      }
+    ],
+    "supplier_orders": [
+      {
+        "supplier": "chip-maker",
+        "material": "chip",
+        "quantity": "500",
+        "arrival": 2,
+        "warehouse": "main"
+      }
+    ]
+  },
+  "demand_shapes": [
+    {
+      "kind": "trend",
+      "target": "all",
+      "rate": "0.0100"
+    },
+    {
+      "kind": "season",
+      "target": {
+        "customer": "distributor"
+      },
+      "factors": [
+        "0.9000",
+        "1.1000"
+      ],
+      "period_length": 4
+    },
+    {
+      "kind": "step",
+      "target": {
+        "product": "monitor"
+      },
+      "period": 6,
+      "factor": "1.2000"
+    },
+    {
+      "kind": "ramp",
+      "target": {
+        "customer": "retailer",
+        "product": "tablet"
+      },
+      "first": 2,
+      "last": 8,
+      "from_factor": "1.0000",
+      "to_factor": "1.5000"
+    },
+    {
+      "kind": "s_curve",
+      "target": {
+        "product": "tablet"
+      },
+      "middle": 6,
+      "steepness": "0.5000",
+      "from_factor": "0.5000",
+      "to_factor": "1.0000"
+    }
+  ],
+  "forecasts": [
+    {
+      "target": {
+        "customer": "distributor",
+        "product": "monitor"
+      },
+      "periods_ahead": 3,
+      "noise": "0.1000",
+      "noise_growth": "0.0500"
+    }
+  ],
+  "disruptions": [
+    {
+      "kind": "supplier_outage",
+      "target": [
+        "chip-maker"
+      ],
+      "start": 3,
+      "duration": 2,
+      "notice": 1,
+      "strength": "0.5000"
+    },
+    {
+      "kind": "material_shortage",
+      "target": [
+        "chip"
+      ],
+      "start": 4,
+      "duration": 2,
+      "notice": 2,
+      "strength": "0.3000"
+    },
+    {
+      "kind": "quality_drop",
+      "target": [
+        "glass-works"
+      ],
+      "start": 5,
+      "duration": 2,
+      "notice": 0,
+      "strength": "0.2000"
+    },
+    {
+      "kind": "transport_delay",
+      "target": [
+        "chip-maker"
+      ],
+      "start": 6,
+      "duration": 2,
+      "notice": 1,
+      "delay": 1
+    },
+    {
+      "kind": "demand_shock",
+      "target": [
+        "monitor"
+      ],
+      "start": 7,
+      "duration": 2,
+      "notice": 2,
+      "factor": "1.5000"
+    },
+    {
+      "kind": "line_breakdown",
+      "target": [
+        "assembly"
+      ],
+      "start": 8,
+      "notice": 0,
+      "loss": "0.4000"
+    },
+    {
+      "kind": "price_change",
+      "target": [
+        "glass"
+      ],
+      "start": 3,
+      "duration": 3,
+      "notice": 1,
+      "factor": "1.2000"
+    },
+    {
+      "kind": "capacity_cut",
+      "target": [
+        "finishing"
+      ],
+      "start": 9,
+      "duration": 2,
+      "notice": 3,
+      "strength": "0.5000"
+    },
+    {
+      "kind": "yield_drop",
+      "target": [
+        "assembly"
+      ],
+      "start": 10,
+      "duration": 1,
+      "notice": 0,
+      "strength": "0.1000"
+    }
+  ],
+  "random_disruptions": [
+    {
+      "name": "outages",
+      "kind": "supplier_outage",
+      "target": [
+        "chip-maker",
+        "glass-works"
+      ],
+      "chance": "0.0500",
+      "choose": "one",
+      "notice": 1,
+      "raises": {
+        "rule": "delays",
+        "factor": "3.0000",
+        "periods": 2
+      },
+      "duration": {
+        "min": 1,
+        "max": 3,
+        "distribution": "uniform"
+      },
+      "strength": {
+        "min": "0.2000",
+        "max": "0.8000",
+        "distribution": "triangular",
+        "mode": "0.5000"
+      }
+    },
+    {
+      "name": "quality",
+      "kind": "quality_drop",
+      "target": "all",
+      "chance": "0.0500",
+      "duration": 2,
+      "strength": {
+        "min": "0.1000",
+        "max": "0.3000",
+        "distribution": "normal",
+        "mean": "0.2000",
+        "sd": "0.0500"
+      }
+    },
+    {
+      "name": "delays",
+      "kind": "transport_delay",
+      "target": [
+        "chip-maker"
+      ],
+      "chance": "0.0500",
+      "duration": {
+        "min": 1,
+        "max": 2,
+        "distribution": "uniform"
+      },
+      "delay": {
+        "min": 1,
+        "max": 2,
+        "distribution": "uniform"
+      }
+    },
+    {
+      "name": "surges",
+      "kind": "demand_shock",
+      "target": [
+        "monitor",
+        "tablet"
+      ],
+      "chance": "0.0500",
+      "duration": 2,
+      "factor": {
+        "min": "1.2000",
+        "max": "2.0000",
+        "distribution": "triangular",
+        "mode": "1.5000"
+      }
+    },
+    {
+      "name": "booms",
+      "kind": "demand_shock",
+      "target": [
+        "monitor",
+        "tablet"
+      ],
+      "start": 6,
+      "duration": 2,
+      "factor": {
+        "min": "1.1000",
+        "max": "3.0000",
+        "distribution": "lognormal",
+        "median": "1.5000",
+        "spread": "0.3000"
+      }
+    },
+    {
+      "name": "prices",
+      "kind": "price_change",
+      "target": [
+        "chip",
+        "glass"
+      ],
+      "chance": "0.0500",
+      "duration": 2,
+      "factor": {
+        "min": "0.9000",
+        "max": "1.3000",
+        "distribution": "normal",
+        "mean": "1.1000",
+        "sd": "0.0500"
+      }
+    },
+    {
+      "name": "breakdowns",
+      "kind": "line_breakdown",
+      "target": [
+        "assembly"
+      ],
+      "chance": "0.0500",
+      "loss": {
+        "min": "0.1000",
+        "max": "0.5000",
+        "distribution": "triangular",
+        "mode": "0.3000"
+      }
+    },
+    {
+      "name": "wear",
+      "kind": "line_breakdown",
+      "target": [
+        "finishing"
+      ],
+      "chance": "0.0500",
+      "loss": {
+        "min": "0.1000",
+        "max": "0.3000",
+        "distribution": "normal",
+        "mean": "0.2000",
+        "sd": "0.0500"
+      }
+    }
+  ],
+  "hidden": [
+    "customers.products.demand",
+    "suppliers.catalogue.punctuality",
+    "suppliers.catalogue.delay",
+    "suppliers.catalogue.completeness",
+    "suppliers.catalogue.acceptance",
+    "lines.items.yield",
+    "lines.breakdown_chance",
+    "lines.breakdown_loss",
+    "disruptions.duration"
+  ]
+}

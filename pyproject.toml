@@ -1,0 +1,128 @@
+[project]
+name = "factory-simulator"
+version = "0.6.0"
+description = "A factory simulator for research on agents."
+readme = "README.md"
+requires-python = ">=3.14,<3.15"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Michal Chojna", email = "m.chojna@icloud.com" }]
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Scientific/Engineering",
+    "Typing :: Typed",
+]
+dependencies = [
+    "duckdb>=1.5.6",
+    "duckdb-engine>=0.17.0",
+    "fastapi>=0.142.2",
+    "httpx2>=2.13.1",
+    "numpy==2.5.3",
+    "pandas>=3.0.6",
+    "pydantic>=2.13.5",
+    "pydantic-settings>=2.15.0",
+    "scipy>=1.18.1",
+    "sqlalchemy>=2.1.3",
+    "starlette>=1.7.0",
+    "uvicorn>=0.54.0",
+]
+
+[project.urls]
+Source = "https://github.com/mchojna/factory-simulator"
+
+[build-system]
+requires = ["uv_build>=0.12,<0.13"]
+build-backend = "uv_build"
+
+[tool.uv]
+required-version = ">=0.12.10,<0.14"
+
+[tool.uv.build-backend]
+# The conftest modules set up the examples of the docstrings; no package holds them.
+source-exclude = ["**/conftest.py"]
+wheel-exclude = ["**/conftest.py"]
+
+[dependency-groups]
+dev = [
+    "hypothesis",
+    "matplotlib>=3.11.2",
+    "pre-commit",
+    "pyright",
+    "pytest",
+    "pytest-cov>=7.1.0",
+    "pytest-split>=0.11.0",
+    "pytest-xdist>=3.8.0",
+    "ruff",
+    "scipy-stubs>=1.18.1.1",
+]
+docs = [
+    "mkdocs-material>=9.7.7",
+    "mkdocs-static-i18n>=1.3.1",
+]
+provider-anthropic = ["anthropic>=1.12.1"]
+provider-google = ["google-genai>=2.23.0,<3.0.0"]
+provider-openai = ["tiktoken>=0.9.0"]
+provider-openrouter = ["openai>=3.37.0"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py314"
+
+[tool.ruff.format]
+# Doctest code in docstrings is formatted like the code around it.
+docstring-code-format = true
+
+[tool.ruff.lint]
+preview = true
+explicit-preview-rules = true
+select = [
+    "F",      # pyflakes
+    "E",      # pycodestyle errors
+    "W",      # pycodestyle warnings
+    "I",      # import order
+    "N",      # naming
+    "D",      # docstrings
+    "ANN",    # type annotations
+    "UP",     # modern syntax
+    "B",      # likely bugs
+    "SIM",    # needless complexity
+    "RUF",    # ruff rules
+    "S",      # security
+    "ARG001",
+    "DOC501",
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.per-file-ignores]
+# Test modules and test functions have no docstrings.
+"tests/**" = ["D", "ANN201", "S"]
+
+[tool.pyright]
+include = ["demos", "src", "tests"]
+pythonVersion = "3.14"
+typeCheckingMode = "strict"
+extraPaths = ["src", "tests"]
+venvPath = "."
+venv = ".venv"
+
+[tool.pytest.ini_options]
+# --doctest-modules runs every docstring example as a test. -n auto runs the tests
+# in one process per CPU; worksteal moves waiting tests to idle processes.
+testpaths = ["demos", "tests", "src"]
+addopts = '--strict-markers --strict-config --doctest-modules --import-mode=importlib -n auto --dist worksteal -m "not stress"'
+pythonpath = [".", "src", "tests"]
+# The commit hook runs the unit tests and the doctests but those marked property
+# or slow. CI runs every test but the stress test.
+markers = [
+    "property: a Hypothesis test over generated inputs",
+    "slow: a test that is not a property and takes more than a second",
+    "stress: the stress test of the scenario library; it runs only when -m names stress",
+]
+
+[tool.coverage.run]
+branch = true
+source = ["src/factory_simulator"]
