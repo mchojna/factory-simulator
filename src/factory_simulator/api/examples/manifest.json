@@ -1,0 +1,840 @@
+{
+  "name": "Electronics factory with economies of scale",
+  "description": "The electronics factory with minimum quantities, discounts and changeovers: large buys and long production runs cost less per unit.",
+  "period_name": "week",
+  "materials": {
+    "microchip": {
+      "unit": "piece",
+      "groups": [
+        "semiconductor"
+      ],
+      "space": "0.001",
+      "storage_cost": "0.0325",
+      "salvage_value": "2.6000"
+    },
+    "microchip-b": {
+      "unit": "piece",
+      "groups": [
+        "semiconductor"
+      ],
+      "space": "0.001",
+      "storage_cost": "0.0385",
+      "salvage_value": "3.0800"
+    },
+    "passive-kit": {
+      "unit": "set",
+      "groups": [
+        "passive"
+      ],
+      "space": "0.002",
+      "storage_cost": "0.0120",
+      "salvage_value": "0.9600"
+    },
+    "pcb-blank": {
+      "unit": "piece",
+      "groups": [
+        "passive"
+      ],
+      "space": "0.002",
+      "storage_cost": "0.0190",
+      "salvage_value": "1.5200"
+    },
+    "lcd-panel": {
+      "unit": "piece",
+      "groups": [
+        "display"
+      ],
+      "space": "0.020",
+      "storage_cost": "0.1900",
+      "salvage_value": "15.2000"
+    },
+    "connector-pins": {
+      "unit": "set",
+      "groups": [
+        "connector"
+      ],
+      "space": "0.001",
+      "storage_cost": "0.0045",
+      "salvage_value": "0.3600"
+    },
+    "copper-wire": {
+      "unit": "metre",
+      "groups": [
+        "connector"
+      ],
+      "space": "0.001",
+      "storage_cost": "0.0022",
+      "salvage_value": "0.1800"
+    },
+    "plastic-resin": {
+      "unit": "kg",
+      "groups": [
+        "mechanical"
+      ],
+      "space": "0.002",
+      "storage_cost": "0.0110",
+      "salvage_value": "0.8800"
+    },
+    "steel-sheet": {
+      "unit": "kg",
+      "groups": [
+        "mechanical"
+      ],
+      "space": "0.001",
+      "storage_cost": "0.0055",
+      "salvage_value": "0.4400"
+    }
+  },
+  "components": {
+    "control-board": {
+      "space": "0.003",
+      "storage_cost": "0.1205",
+      "salvage_value": "6.1440",
+      "recipes": {
+        "standard": {
+          "microchip": "2.000",
+          "pcb-blank": "1.000",
+          "passive-kit": "1.000"
+        },
+        "alternative": {
+          "microchip-b": "2.000",
+          "pcb-blank": "1.000",
+          "passive-kit": "1.000"
+        }
+      },
+      "default_recipe": "standard"
+    },
+    "power-module": {
+      "space": "0.003",
+      "storage_cost": "0.0660",
+      "salvage_value": "2.9680",
+      "recipes": {
+        "standard": {
+          "passive-kit": "2.000",
+          "pcb-blank": "1.000",
+          "copper-wire": "1.500"
+        }
+      }
+    },
+    "sensor-module": {
+      "space": "0.002",
+      "storage_cost": "0.0801",
+      "salvage_value": "3.8720",
+      "recipes": {
+        "standard": {
+          "microchip": "1.000",
+          "pcb-blank": "1.000",
+          "connector-pins": "2.000"
+        }
+      }
+    },
+    "display-unit": {
+      "space": "0.025",
+      "storage_cost": "0.2458",
+      "salvage_value": "12.3712",
+      "recipes": {
+        "standard": {
+          "lcd-panel": "1.000",
+          "plastic-resin": "0.300"
+        }
+      }
+    },
+    "enclosure": {
+      "space": "0.015",
+      "storage_cost": "0.0454",
+      "salvage_value": "0.9856",
+      "recipes": {
+        "standard": {
+          "steel-sheet": "2.000",
+          "plastic-resin": "0.400"
+        }
+      }
+    },
+    "cable-harness": {
+      "space": "0.004",
+      "storage_cost": "0.0420",
+      "salvage_value": "1.0080",
+      "recipes": {
+        "standard": {
+          "copper-wire": "3.000",
+          "connector-pins": "2.000"
+        }
+      }
+    }
+  },
+  "products": {
+    "industrial-controller": {
+      "space": "0.030",
+      "storage_cost": "0.3299",
+      "salvage_value": "8.8845",
+      "recipes": {
+        "standard": {
+          "control-board": "1.000",
+          "power-module": "1.000",
+          "enclosure": "1.000",
+          "cable-harness": "1.000"
+        }
+      },
+      "groups": [
+        "spare-parts"
+      ]
+    },
+    "smart-monitor": {
+      "space": "0.040",
+      "storage_cost": "0.5214",
+      "salvage_value": "17.9750",
+      "recipes": {
+        "standard": {
+          "display-unit": "1.000",
+          "control-board": "1.000",
+          "power-module": "1.000",
+          "enclosure": "1.000"
+        }
+      },
+      "groups": [
+        "new-devices"
+      ]
+    },
+    "sensor-gateway": {
+      "space": "0.020",
+      "storage_cost": "0.2650",
+      "salvage_value": "7.0669",
+      "recipes": {
+        "standard": {
+          "sensor-module": "1.000",
+          "power-module": "1.000",
+          "enclosure": "1.000",
+          "cable-harness": "1.000"
+        }
+      },
+      "groups": [
+        "new-devices"
+      ]
+    }
+  },
+  "suppliers": {
+    "apac-chips": {
+      "groups": [
+        "apac"
+      ],
+      "catalogue": {
+        "microchip": {
+          "price": {
+            "min": "6.0000",
+            "max": "7.5000",
+            "distribution": "triangular",
+            "mode": "6.5000"
+          },
+          "max_quantity": "2000.000",
+          "express_lead_time": 2,
+          "express_cost": "1.6250",
+          "cancellation_fee": "0.6500",
+          "min_quantity": "500.000",
+          "discounts": [
+            {
+              "from": "1000.000",
+              "price": "5.8500"
+            },
+            {
+              "from": "1500.000",
+              "price": "5.7000"
+            }
+          ]
+        }
+      }
+    },
+    "emea-electronic-parts": {
+      "groups": [
+        "emea"
+      ],
+      "catalogue": {
+        "microchip-b": {
+          "price": "7.7000",
+          "max_quantity": "1500.000",
+          "express_lead_time": 1,
+          "express_cost": "1.9250",
+          "cancellation_fee": "0.7700"
+        },
+        "passive-kit": {
+          "price": {
+            "min": "2.2000",
+            "max": "2.6000",
+            "distribution": "triangular",
+            "mode": "2.4000"
+          },
+          "max_quantity": "3000.000",
+          "express_lead_time": 1,
+          "express_cost": "0.6000",
+          "cancellation_fee": "0.2400",
+          "discounts": [
+            {
+              "from": "1500.000",
+              "price": "2.1000"
+            }
+          ]
+        },
+        "pcb-blank": {
+          "price": "3.8000",
+          "max_quantity": "2500.000",
+          "express_lead_time": 1,
+          "express_cost": "0.9500",
+          "cancellation_fee": "0.3800",
+          "discounts": [
+            {
+              "from": "1000.000",
+              "price": "3.6100"
+            }
+          ]
+        },
+        "connector-pins": {
+          "price": "0.9000",
+          "max_quantity": "2500.000",
+          "express_lead_time": 1,
+          "express_cost": "0.2250",
+          "cancellation_fee": "0.0900"
+        },
+        "lcd-panel": {
+          "price": "45.6000",
+          "max_quantity": "500.000",
+          "express_lead_time": 1,
+          "express_cost": "11.4000",
+          "cancellation_fee": "4.5600"
+        },
+        "copper-wire": {
+          "price": "0.5175",
+          "max_quantity": "4000.000",
+          "express_lead_time": 1,
+          "express_cost": "0.1294",
+          "cancellation_fee": "0.0518"
+        }
+      }
+    },
+    "amer-metals": {
+      "groups": [
+        "amer"
+      ],
+      "catalogue": {
+        "copper-wire": {
+          "price": "0.4500",
+          "max_quantity": "4000.000",
+          "express_lead_time": 1,
+          "express_cost": "0.1125",
+          "cancellation_fee": "0.0450"
+        },
+        "steel-sheet": {
+          "price": "1.1000",
+          "max_quantity": "2500.000",
+          "express_lead_time": 1,
+          "express_cost": "0.2750",
+          "cancellation_fee": "0.1100"
+        },
+        "passive-kit": {
+          "price": "2.7600",
+          "lead_time": 1,
+          "max_quantity": "3000.000",
+          "cancellation_fee": "0.2760"
+        }
+      }
+    },
+    "apac-displays-plastics": {
+      "groups": [
+        "apac"
+      ],
+      "catalogue": {
+        "lcd-panel": {
+          "price": {
+            "min": "34.0000",
+            "max": "42.0000",
+            "distribution": "triangular",
+            "mode": "38.0000"
+          },
+          "max_quantity": "500.000",
+          "express_lead_time": 2,
+          "express_cost": "9.5000",
+          "cancellation_fee": "3.8000",
+          "min_quantity": "100.000"
+        },
+        "plastic-resin": {
+          "price": "2.2000",
+          "max_quantity": "600.000",
+          "express_lead_time": 2,
+          "express_cost": "0.5500",
+          "cancellation_fee": "0.2200"
+        }
+      }
+    }
+  },
+  "customers": {
+    "tier1-distributor": {
+      "payment_terms": 4,
+      "products": {
+        "industrial-controller": {
+          "price": "144.0000",
+          "transport_cost": "3.2000",
+          "demand": {
+            "min": "27.000",
+            "max": "63.000",
+            "distribution": "normal",
+            "mean": "45.000",
+            "sd": "5.400"
+          }
+        },
+        "smart-monitor": {
+          "price": "189.0000",
+          "transport_cost": "4.2000",
+          "demand": {
+            "min": "14.000",
+            "max": "70.000",
+            "distribution": "lognormal",
+            "median": "35.000",
+            "spread": "0.4000"
+          }
+        },
+        "sensor-gateway": {
+          "price": "108.0000",
+          "transport_cost": "2.4000",
+          "demand": {
+            "min": "8.000",
+            "max": "40.000",
+            "distribution": "lognormal",
+            "median": "20.000",
+            "spread": "0.4000"
+          }
+        }
+      }
+    },
+    "equipment-maker": {
+      "payment_terms": 6,
+      "products": {
+        "industrial-controller": {
+          "price": "152.0000",
+          "transport_cost": "3.8400",
+          "demand": {
+            "min": "18.000",
+            "max": "42.000",
+            "distribution": "normal",
+            "mean": "30.000",
+            "sd": "3.600"
+          }
+        },
+        "smart-monitor": {
+          "price": "199.5000",
+          "transport_cost": "5.0400",
+          "demand": {
+            "min": "8.000",
+            "max": "40.000",
+            "distribution": "lognormal",
+            "median": "20.000",
+            "spread": "0.4000"
+          }
+        },
+        "sensor-gateway": {
+          "price": "114.0000",
+          "transport_cost": "2.8800",
+          "demand": {
+            "min": "8.000",
+            "max": "40.000",
+            "distribution": "lognormal",
+            "median": "20.000",
+            "spread": "0.4000"
+          }
+        }
+      }
+    },
+    "retail-chain": {
+      "payment_terms": 8,
+      "products": {
+        "smart-monitor": {
+          "price": "193.2000",
+          "transport_cost": "3.7800",
+          "demand": {
+            "min": "16.000",
+            "max": "80.000",
+            "distribution": "lognormal",
+            "median": "40.000",
+            "spread": "0.4000"
+          }
+        },
+        "sensor-gateway": {
+          "price": "110.4000",
+          "transport_cost": "2.1600",
+          "demand": {
+            "min": "6.000",
+            "max": "30.000",
+            "distribution": "lognormal",
+            "median": "15.000",
+            "spread": "0.4000"
+          }
+        }
+      }
+    },
+    "system-integrator": {
+      "payment_terms": 2,
+      "products": {
+        "industrial-controller": {
+          "price": "160.0000",
+          "transport_cost": "4.1600",
+          "demand": {
+            "min": "9.000",
+            "max": "21.000",
+            "distribution": "normal",
+            "mean": "15.000",
+            "sd": "1.800"
+          }
+        },
+        "sensor-gateway": {
+          "price": "120.0000",
+          "transport_cost": "3.1200",
+          "demand": {
+            "min": "10.000",
+            "max": "50.000",
+            "distribution": "lognormal",
+            "median": "25.000",
+            "spread": "0.4000"
+          }
+        }
+      }
+    }
+  },
+  "lines": {
+    "smt-line": {
+      "warehouse": "main-plant",
+      "capacity": "80.000",
+      "wear_per_period": "0.0050",
+      "wear_per_hour": "0.0005",
+      "breakdown_chance": "0.0200",
+      "breakdown_loss": {
+        "min": "0.1000",
+        "max": "0.3000"
+      },
+      "repair_cost": "2500.0000",
+      "repair_time": "16.000",
+      "repair_limit": "0.5000",
+      "overtime_hours": "16.000",
+      "overtime_cost": "55.0000",
+      "items": {
+        "control-board": {
+          "time": "0.140",
+          "cost": "4.9000",
+          "yield": {
+            "min": "0.9600",
+            "max": "0.9900"
+          },
+          "changeover_time": "2.000",
+          "changeover_cost": "300.0000"
+        },
+        "power-module": {
+          "time": "0.112",
+          "cost": "3.9200",
+          "yield": {
+            "min": "0.9600",
+            "max": "0.9900"
+          },
+          "changeover_time": "2.000",
+          "changeover_cost": "300.0000"
+        },
+        "sensor-module": {
+          "time": "0.112",
+          "cost": "3.9200",
+          "yield": {
+            "min": "0.9600",
+            "max": "0.9900"
+          },
+          "changeover_time": "2.000",
+          "changeover_cost": "300.0000"
+        }
+      }
+    },
+    "module-assembly-line": {
+      "warehouse": "main-plant",
+      "capacity": "64.000",
+      "wear_per_period": "0.0030",
+      "wear_per_hour": "0.0003",
+      "breakdown_chance": "0.0150",
+      "breakdown_loss": {
+        "min": "0.1000",
+        "max": "0.2500"
+      },
+      "repair_cost": "1200.0000",
+      "repair_time": "8.000",
+      "repair_limit": "0.6000",
+      "items": {
+        "display-unit": {
+          "time": "0.300",
+          "cost": "10.5000",
+          "yield": {
+            "min": "0.9700",
+            "max": "0.9950"
+          }
+        },
+        "cable-harness": {
+          "time": "0.150",
+          "cost": "5.2500",
+          "yield": {
+            "min": "0.9700",
+            "max": "0.9950"
+          }
+        },
+        "power-module": {
+          "time": "0.180",
+          "cost": "6.3000",
+          "yield": {
+            "min": "0.9500",
+            "max": "0.9800"
+          }
+        }
+      }
+    },
+    "moulding-line": {
+      "warehouse": "main-plant",
+      "capacity": "64.000",
+      "wear_per_period": "0.0060",
+      "wear_per_hour": "0.0006",
+      "breakdown_chance": "0.0300",
+      "breakdown_loss": {
+        "min": "0.1500",
+        "max": "0.4000"
+      },
+      "repair_cost": "1800.0000",
+      "repair_time": "12.000",
+      "repair_limit": "0.5000",
+      "items": {
+        "enclosure": {
+          "time": "0.200",
+          "cost": "6.0000",
+          "yield": {
+            "min": "0.9800",
+            "max": "1.0000"
+          }
+        }
+      }
+    },
+    "final-assembly-line": {
+      "warehouse": "main-plant",
+      "capacity": "72.000",
+      "wear_per_period": "0.0020",
+      "wear_per_hour": "0.0002",
+      "breakdown_chance": "0.0100",
+      "breakdown_loss": {
+        "min": "0.0500",
+        "max": "0.2000"
+      },
+      "repair_cost": "800.0000",
+      "repair_time": "8.000",
+      "repair_limit": "0.7000",
+      "overtime_hours": "16.000",
+      "overtime_cost": "55.0000",
+      "items": {
+        "industrial-controller": {
+          "time": "0.320",
+          "cost": "11.2000",
+          "yield": {
+            "min": "0.9750",
+            "max": "0.9950"
+          },
+          "changeover_time": "1.000",
+          "changeover_cost": "150.0000"
+        },
+        "smart-monitor": {
+          "time": "0.250",
+          "cost": "8.7500",
+          "yield": {
+            "min": "0.9750",
+            "max": "0.9950"
+          },
+          "changeover_time": "1.000",
+          "changeover_cost": "150.0000"
+        },
+        "sensor-gateway": {
+          "time": "0.180",
+          "cost": "6.3000",
+          "yield": {
+            "min": "0.9750",
+            "max": "0.9950"
+          },
+          "changeover_time": "1.000",
+          "changeover_cost": "150.0000"
+        }
+      }
+    }
+  },
+  "warehouses": {
+    "main-plant": {
+      "capacity": "116.000"
+    },
+    "distribution-centre": {
+      "capacity": "120.000",
+      "storage_factor": "0.6000",
+      "transport_factor": "0.8500",
+      "accepts": [
+        "products"
+      ]
+    }
+  },
+  "routes": {
+    "main-plant": {
+      "distribution-centre": {
+        "cost": "0.8000",
+        "lead_time": 1
+      }
+    }
+  },
+  "cash": {
+    "credit_limit": "80000.0000",
+    "credit_interest": "0.0003",
+    "debit_interest": "0.0015",
+    "overdraft_interest": "0.0040"
+  },
+  "groups": {
+    "emea": {
+      "kind": "region",
+      "defaults": {
+        "catalogue": {
+          "lead_time": 2,
+          "punctuality": {
+            "min": "0.9000",
+            "max": "0.9700"
+          },
+          "delay": 1,
+          "backfill_delay": 1
+        }
+      }
+    },
+    "apac": {
+      "kind": "region",
+      "defaults": {
+        "catalogue": {
+          "lead_time": {
+            "min": 3,
+            "max": 5
+          },
+          "punctuality": {
+            "min": "0.8000",
+            "max": "0.9200"
+          },
+          "delay": {
+            "min": 1,
+            "max": 2
+          },
+          "backfill_delay": 2
+        }
+      }
+    },
+    "amer": {
+      "kind": "region",
+      "defaults": {
+        "catalogue": {
+          "lead_time": 3,
+          "punctuality": {
+            "min": "0.8800",
+            "max": "0.9500"
+          },
+          "delay": {
+            "min": 1,
+            "max": 2
+          },
+          "backfill_delay": 2
+        }
+      }
+    },
+    "new-devices": {
+      "kind": "segment",
+      "defaults": {
+        "customer_products": {
+          "lead_time": 1,
+          "patience": 2,
+          "late_penalty": "12.0000",
+          "lost_sale_penalty": "30.0000",
+          "demand_persistence": "0.3000"
+        }
+      }
+    },
+    "spare-parts": {
+      "kind": "segment",
+      "defaults": {
+        "customer_products": {
+          "lead_time": 2,
+          "patience": 4,
+          "late_penalty": "3.0000",
+          "lost_sale_penalty": "20.0000",
+          "demand_persistence": "0.6000"
+        }
+      }
+    },
+    "semiconductor": {
+      "kind": "category",
+      "defaults": {
+        "catalogue": {
+          "completeness": {
+            "min": "0.9700",
+            "max": "1.0000"
+          },
+          "acceptance": {
+            "min": "0.9800",
+            "max": "1.0000"
+          }
+        }
+      }
+    },
+    "passive": {
+      "kind": "category",
+      "defaults": {
+        "catalogue": {
+          "completeness": {
+            "min": "0.9500",
+            "max": "1.0000"
+          },
+          "acceptance": {
+            "min": "0.9700",
+            "max": "1.0000"
+          }
+        }
+      }
+    },
+    "connector": {
+      "kind": "category",
+      "defaults": {
+        "catalogue": {
+          "completeness": {
+            "min": "0.9600",
+            "max": "1.0000"
+          },
+          "acceptance": {
+            "min": "0.9800",
+            "max": "1.0000"
+          }
+        }
+      }
+    },
+    "display": {
+      "kind": "category",
+      "defaults": {
+        "catalogue": {
+          "completeness": {
+            "min": "0.9500",
+            "max": "1.0000"
+          },
+          "acceptance": {
+            "min": "0.9500",
+            "max": "0.9900"
+          }
+        }
+      }
+    },
+    "mechanical": {
+      "kind": "category",
+      "defaults": {
+        "catalogue": {
+          "completeness": {
+            "min": "0.9800",
+            "max": "1.0000"
+          },
+          "acceptance": {
+            "min": "0.9900",
+            "max": "1.0000"
+          }
+        }
+      }
+    }
+  }
+}

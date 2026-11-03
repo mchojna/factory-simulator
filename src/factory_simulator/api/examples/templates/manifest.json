@@ -1,0 +1,1330 @@
+{
+  "name": "Template factory",
+  "description": "Every key of a manifest, used at least once. The numbers are placeholders.",
+  "period_name": "week",
+  "materials": {
+    "chip": {
+      "name": "Chip",
+      "description": "A material bought from suppliers.",
+      "unit": "piece",
+      "space": "0.010",
+      "storage_cost": {
+        "min": "0.0100",
+        "max": "0.0200",
+        "distribution": "triangular",
+        "mode": "0.0150"
+      },
+      "salvage_value": {
+        "min": "0.1000",
+        "max": "0.3000",
+        "distribution": "triangular",
+        "mode": "0.2000"
+      },
+      "groups": [
+        "semiconductors"
+      ]
+    },
+    "glass": {
+      "name": "Glass",
+      "description": "A second material.",
+      "unit": "sheet",
+      "space": "0.100",
+      "storage_cost": {
+        "min": "0.0100",
+        "max": "0.0300",
+        "distribution": "normal",
+        "mean": "0.0200",
+        "sd": "0.0050"
+      },
+      "salvage_value": {
+        "min": "0.5000",
+        "max": "1.5000",
+        "distribution": "normal",
+        "mean": "1.0000",
+        "sd": "0.2000"
+      },
+      "groups": [
+        "optics"
+      ]
+    }
+  },
+  "components": {
+    "board": {
+      "name": "Board",
+      "description": "A component made from chips.",
+      "unit": "piece",
+      "space": "0.050",
+      "storage_cost": {
+        "min": "0.0500",
+        "max": "0.0800",
+        "distribution": "triangular",
+        "mode": "0.0600"
+      },
+      "salvage_value": {
+        "min": "0.5000",
+        "max": "0.7000",
+        "distribution": "triangular",
+        "mode": "0.6000"
+      },
+      "recipes": {
+        "standard": {
+          "chip": "4.000"
+        },
+        "dense": {
+          "chip": "3.000",
+          "glass": "0.100"
+        }
+      },
+      "default_recipe": "standard",
+      "groups": [
+        "boards"
+      ]
+    },
+    "panel": {
+      "name": "Panel",
+      "description": "A component made from glass.",
+      "unit": "piece",
+      "space": "0.200",
+      "storage_cost": {
+        "min": "0.0500",
+        "max": "0.1000",
+        "distribution": "normal",
+        "mean": "0.0800",
+        "sd": "0.0100"
+      },
+      "salvage_value": {
+        "min": "0.5000",
+        "max": "0.9000",
+        "distribution": "normal",
+        "mean": "0.7000",
+        "sd": "0.1000"
+      },
+      "recipes": {
+        "standard": {
+          "glass": "1.000"
+        }
+      },
+      "groups": [
+        "panels"
+      ]
+    }
+  },
+  "products": {
+    "monitor": {
+      "name": "Monitor",
+      "description": "A product sold to customers.",
+      "unit": "piece",
+      "common_share": "0.3000",
+      "space": "1.000",
+      "storage_cost": {
+        "min": "0.2000",
+        "max": "0.3000",
+        "distribution": "triangular",
+        "mode": "0.2500"
+      },
+      "salvage_value": {
+        "min": "1.0000",
+        "max": "2.0000",
+        "distribution": "triangular",
+        "mode": "1.5000"
+      },
+      "recipes": {
+        "standard": {
+          "board": "1.000",
+          "panel": "1.000"
+        }
+      },
+      "groups": [
+        "displays"
+      ]
+    },
+    "tablet": {
+      "name": "Tablet",
+      "description": "A second product.",
+      "unit": "piece",
+      "space": "0.500",
+      "storage_cost": {
+        "min": "0.1000",
+        "max": "0.2000",
+        "distribution": "normal",
+        "mean": "0.1500",
+        "sd": "0.0200"
+      },
+      "salvage_value": {
+        "min": "1.0000",
+        "max": "2.0000",
+        "distribution": "normal",
+        "mean": "1.5000",
+        "sd": "0.2000"
+      },
+      "recipes": {
+        "standard": {
+          "board": "1.000",
+          "panel": "1.000"
+        },
+        "light": {
+          "board": "1.000",
+          "panel": "0.500"
+        }
+      },
+      "default_recipe": "standard",
+      "groups": [
+        "handhelds"
+      ]
+    }
+  },
+  "suppliers": {
+    "chip-maker": {
+      "name": "Chip maker",
+      "description": "A supplier with every term of a catalogue entry.",
+      "groups": [
+        "far-east"
+      ],
+      "catalogue": {
+        "chip": {
+          "price": {
+            "min": "0.9000",
+            "max": "1.1000",
+            "distribution": "triangular",
+            "mode": "1.0000",
+            "drawn": "period"
+          },
+          "lead_time": {
+            "min": 3,
+            "max": 4,
+            "distribution": "uniform"
+          },
+          "max_quantity": {
+            "min": "5000.000",
+            "max": "8000.000",
+            "distribution": "triangular",
+            "mode": "6000.000"
+          },
+          "punctuality": {
+            "min": "0.8000",
+            "max": "1.0000",
+            "distribution": "triangular",
+            "mode": "0.9000"
+          },
+          "delay": {
+            "min": 1,
+            "max": 2,
+            "distribution": "uniform"
+          },
+          "completeness": {
+            "min": "0.9000",
+            "max": "1.0000",
+            "distribution": "triangular",
+            "mode": "0.9500"
+          },
+          "acceptance": {
+            "min": "0.9500",
+            "max": "1.0000",
+            "distribution": "triangular",
+            "mode": "0.9800"
+          },
+          "cancellation_fee": {
+            "min": "0.0500",
+            "max": "0.1500",
+            "distribution": "triangular",
+            "mode": "0.1000"
+          },
+          "backfill_delay": {
+            "min": 1,
+            "max": 2,
+            "distribution": "uniform"
+          },
+          "express_lead_time": {
+            "min": 1,
+            "max": 2,
+            "distribution": "uniform"
+          },
+          "express_cost": {
+            "min": "0.2000",
+            "max": "0.4000",
+            "distribution": "triangular",
+            "mode": "0.3000"
+          },
+          "min_quantity": {
+            "min": "100.000",
+            "max": "300.000",
+            "distribution": "triangular",
+            "mode": "200.000"
+          },
+          "discounts": [
+            {
+              "from": "1000.000",
+              "price": {
+                "min": "0.8000",
+                "max": "0.8800",
+                "distribution": "triangular",
+                "mode": "0.8500"
+              }
+            },
+            {
+              "from": "3000.000",
+              "price": {
+                "min": "0.7000",
+                "max": "0.7800",
+                "distribution": "normal",
+                "mean": "0.7500",
+                "sd": "0.0200"
+              }
+            }
+          ]
+        },
+        "glass": {
+          "price": {
+            "min": "3.0000",
+            "max": "4.0000",
+            "distribution": "normal",
+            "mean": "3.5000",
+            "sd": "0.2000"
+          },
+          "lead_time": 2,
+          "max_quantity": {
+            "min": "500.000",
+            "max": "1500.000",
+            "distribution": "normal",
+            "mean": "1000.000",
+            "sd": "100.000"
+          },
+          "punctuality": {
+            "min": "0.8000",
+            "max": "1.0000",
+            "distribution": "normal",
+            "mean": "0.9000",
+            "sd": "0.0500"
+          },
+          "delay": 1,
+          "completeness": {
+            "min": "0.9000",
+            "max": "1.0000",
+            "distribution": "normal",
+            "mean": "0.9500",
+            "sd": "0.0200"
+          },
+          "acceptance": {
+            "min": "0.9500",
+            "max": "1.0000",
+            "distribution": "normal",
+            "mean": "0.9800",
+            "sd": "0.0100"
+          },
+          "cancellation_fee": {
+            "min": "0.1000",
+            "max": "0.3000",
+            "distribution": "normal",
+            "mean": "0.2000",
+            "sd": "0.0500"
+          },
+          "backfill_delay": 1,
+          "express_lead_time": 1,
+          "express_cost": {
+            "min": "0.5000",
+            "max": "1.5000",
+            "distribution": "normal",
+            "mean": "1.0000",
+            "sd": "0.2000"
+          },
+          "min_quantity": {
+            "min": "10.000",
+            "max": "30.000",
+            "distribution": "normal",
+            "mean": "20.000",
+            "sd": "5.000"
+          }
+        }
+      }
+    },
+    "glass-works": {
+      "name": "Glass works",
+      "description": "A second supplier, given its terms by its group.",
+      "groups": [
+        "near-shore"
+      ],
+      "catalogue": {
+        "glass": {
+          "price": "3.8000",
+          "max_quantity": "2000.000"
+        }
+      }
+    }
+  },
+  "customers": {
+    "distributor": {
+      "name": "Distributor",
+      "description": "A customer that pays later.",
+      "payment_terms": {
+        "min": 1,
+        "max": 3,
+        "distribution": "uniform"
+      },
+      "groups": [
+        "wholesale"
+      ],
+      "products": {
+        "monitor": {
+          "price": {
+            "min": "40.0000",
+            "max": "50.0000",
+            "distribution": "triangular",
+            "mode": "45.0000"
+          },
+          "transport_cost": {
+            "min": "0.5000",
+            "max": "1.5000",
+            "distribution": "triangular",
+            "mode": "1.0000"
+          },
+          "demand": {
+            "min": "20.000",
+            "max": "40.000",
+            "distribution": "triangular",
+            "mode": "30.000"
+          },
+          "demand_persistence": "0.3000",
+          "lead_time": {
+            "min": 1,
+            "max": 2,
+            "distribution": "uniform"
+          },
+          "patience": {
+            "min": 1,
+            "max": 3,
+            "distribution": "uniform"
+          },
+          "late_penalty": {
+            "min": "1.0000",
+            "max": "3.0000",
+            "distribution": "triangular",
+            "mode": "2.0000"
+          },
+          "lost_sale_penalty": {
+            "min": "5.0000",
+            "max": "10.0000",
+            "distribution": "triangular",
+            "mode": "8.0000"
+          }
+        }
+      }
+    },
+    "retailer": {
+      "name": "Retailer",
+      "description": "A second customer, given its terms by its group.",
+      "groups": [
+        "retail"
+      ],
+      "products": {
+        "tablet": {
+          "price": {
+            "min": "25.0000",
+            "max": "35.0000",
+            "distribution": "normal",
+            "mean": "30.0000",
+            "sd": "2.0000"
+          },
+          "transport_cost": {
+            "min": "0.5000",
+            "max": "1.5000",
+            "distribution": "normal",
+            "mean": "1.0000",
+            "sd": "0.2000"
+          },
+          "demand": {
+            "min": "10.000",
+            "max": "30.000",
+            "distribution": "normal",
+            "mean": "20.000",
+            "sd": "4.000"
+          },
+          "demand_persistence": "0.5000",
+          "lead_time": 1,
+          "patience": 2,
+          "late_penalty": {
+            "min": "1.0000",
+            "max": "3.0000",
+            "distribution": "normal",
+            "mean": "2.0000",
+            "sd": "0.5000"
+          },
+          "lost_sale_penalty": {
+            "min": "4.0000",
+            "max": "8.0000",
+            "distribution": "normal",
+            "mean": "6.0000",
+            "sd": "1.0000"
+          }
+        },
+        "monitor": {}
+      }
+    }
+  },
+  "lines": {
+    "assembly": {
+      "name": "Assembly",
+      "description": "A line with overtime and changeovers.",
+      "groups": [
+        "fast-lines"
+      ],
+      "warehouse": "main",
+      "capacity": {
+        "min": "60.000",
+        "max": "90.000",
+        "distribution": "triangular",
+        "mode": "80.000"
+      },
+      "wear_per_period": {
+        "min": "0.0010",
+        "max": "0.0030",
+        "distribution": "triangular",
+        "mode": "0.0020"
+      },
+      "wear_per_hour": {
+        "min": "0.0010",
+        "max": "0.0030",
+        "distribution": "triangular",
+        "mode": "0.0020"
+      },
+      "breakdown_chance": {
+        "min": "0.0100",
+        "max": "0.0500",
+        "distribution": "triangular",
+        "mode": "0.0200"
+      },
+      "breakdown_loss": {
+        "min": "0.1000",
+        "max": "0.3000",
+        "distribution": "triangular",
+        "mode": "0.2000"
+      },
+      "repair_cost": {
+        "min": "100.0000",
+        "max": "200.0000",
+        "distribution": "triangular",
+        "mode": "150.0000"
+      },
+      "repair_time": {
+        "min": "4.000",
+        "max": "8.000",
+        "distribution": "triangular",
+        "mode": "6.000"
+      },
+      "repair_limit": {
+        "min": "0.5000",
+        "max": "0.7000",
+        "distribution": "triangular",
+        "mode": "0.6000"
+      },
+      "overtime_hours": {
+        "min": "0.000",
+        "max": "16.000",
+        "distribution": "triangular",
+        "mode": "8.000"
+      },
+      "overtime_cost": {
+        "min": "40.0000",
+        "max": "50.0000",
+        "distribution": "triangular",
+        "mode": "45.0000"
+      },
+      "items": {
+        "board": {
+          "time": {
+            "min": "0.100",
+            "max": "0.200",
+            "distribution": "triangular",
+            "mode": "0.150"
+          },
+          "cost": {
+            "min": "0.5000",
+            "max": "0.7000",
+            "distribution": "triangular",
+            "mode": "0.6000"
+          },
+          "yield": {
+            "min": "0.9000",
+            "max": "1.0000",
+            "distribution": "lognormal",
+            "median": "0.9500",
+            "spread": "0.0200"
+          },
+          "lead_time": {
+            "min": 1,
+            "max": 2,
+            "distribution": "uniform"
+          },
+          "changeover_time": {
+            "min": "1.000",
+            "max": "3.000",
+            "distribution": "triangular",
+            "mode": "2.000"
+          },
+          "changeover_cost": {
+            "min": "10.0000",
+            "max": "30.0000",
+            "distribution": "triangular",
+            "mode": "20.0000"
+          }
+        },
+        "monitor": {
+          "time": {
+            "min": "0.300",
+            "max": "0.500",
+            "distribution": "triangular",
+            "mode": "0.400"
+          },
+          "cost": {
+            "min": "2.0000",
+            "max": "3.0000",
+            "distribution": "triangular",
+            "mode": "2.5000"
+          },
+          "yield": {
+            "min": "0.9500",
+            "max": "1.0000",
+            "distribution": "triangular",
+            "mode": "0.9800"
+          }
+        }
+      }
+    },
+    "finishing": {
+      "name": "Finishing",
+      "description": "A second line, given its terms by its group.",
+      "groups": [
+        "slow-lines"
+      ],
+      "warehouse": "main",
+      "capacity": {
+        "min": "40.000",
+        "max": "80.000",
+        "distribution": "normal",
+        "mean": "60.000",
+        "sd": "5.000"
+      },
+      "wear_per_period": {
+        "min": "0.0010",
+        "max": "0.0030",
+        "distribution": "normal",
+        "mean": "0.0020",
+        "sd": "0.0005"
+      },
+      "wear_per_hour": {
+        "min": "0.0010",
+        "max": "0.0030",
+        "distribution": "normal",
+        "mean": "0.0020",
+        "sd": "0.0005"
+      },
+      "breakdown_chance": {
+        "min": "0.0100",
+        "max": "0.0500",
+        "distribution": "normal",
+        "mean": "0.0200",
+        "sd": "0.0050"
+      },
+      "breakdown_loss": {
+        "min": "0.1000",
+        "max": "0.3000",
+        "distribution": "normal",
+        "mean": "0.2000",
+        "sd": "0.0500"
+      },
+      "repair_cost": {
+        "min": "100.0000",
+        "max": "200.0000",
+        "distribution": "normal",
+        "mean": "150.0000",
+        "sd": "20.0000"
+      },
+      "repair_time": {
+        "min": "4.000",
+        "max": "8.000",
+        "distribution": "normal",
+        "mean": "6.000",
+        "sd": "1.000"
+      },
+      "repair_limit": {
+        "min": "0.5000",
+        "max": "0.7000",
+        "distribution": "normal",
+        "mean": "0.6000",
+        "sd": "0.0500"
+      },
+      "overtime_hours": {
+        "min": "4.000",
+        "max": "12.000",
+        "distribution": "normal",
+        "mean": "8.000",
+        "sd": "2.000"
+      },
+      "overtime_cost": {
+        "min": "40.0000",
+        "max": "50.0000",
+        "distribution": "normal",
+        "mean": "45.0000",
+        "sd": "2.0000"
+      },
+      "items": {
+        "panel": {
+          "time": {
+            "min": "0.100",
+            "max": "0.200",
+            "distribution": "normal",
+            "mean": "0.150",
+            "sd": "0.020"
+          },
+          "cost": {
+            "min": "0.5000",
+            "max": "0.7000",
+            "distribution": "normal",
+            "mean": "0.6000",
+            "sd": "0.0500"
+          },
+          "yield": {
+            "min": "0.9000",
+            "max": "1.0000",
+            "distribution": "normal",
+            "mean": "0.9500",
+            "sd": "0.0200"
+          },
+          "lead_time": 1,
+          "changeover_time": {
+            "min": "1.000",
+            "max": "3.000",
+            "distribution": "normal",
+            "mean": "2.000",
+            "sd": "0.500"
+          },
+          "changeover_cost": {
+            "min": "10.0000",
+            "max": "30.0000",
+            "distribution": "normal",
+            "mean": "20.0000",
+            "sd": "5.0000"
+          }
+        },
+        "tablet": {
+          "time": {
+            "min": "0.200",
+            "max": "0.400",
+            "distribution": "normal",
+            "mean": "0.300",
+            "sd": "0.050"
+          },
+          "cost": {
+            "min": "1.5000",
+            "max": "2.5000",
+            "distribution": "normal",
+            "mean": "2.0000",
+            "sd": "0.2000"
+          },
+          "yield": {
+            "min": "0.9500",
+            "max": "1.0000",
+            "distribution": "normal",
+            "mean": "0.9800",
+            "sd": "0.0100"
+          }
+        }
+      }
+    }
+  },
+  "warehouses": {
+    "main": {
+      "name": "Main plant",
+      "description": "The warehouse at the lines.",
+      "capacity": "2000.000",
+      "storage_factor": "1.0000",
+      "transport_factor": "1.0000",
+      "accepts": [
+        "materials",
+        "components",
+        "products"
+      ]
+    },
+    "centre": {
+      "name": "Distribution centre",
+      "description": "A second warehouse that holds the displays only.",
+      "capacity": "3000.000",
+      "storage_factor": "0.8000",
+      "transport_factor": "0.9000",
+      "accepts": [
+        {
+          "group": "displays"
+        }
+      ]
+    }
+  },
+  "routes": {
+    "main": {
+      "centre": {
+        "cost": {
+          "min": "0.1000",
+          "max": "0.3000",
+          "distribution": "triangular",
+          "mode": "0.2000"
+        },
+        "lead_time": {
+          "min": 1,
+          "max": 2,
+          "distribution": "uniform"
+        }
+      }
+    },
+    "centre": {
+      "main": {
+        "cost": {
+          "min": "0.1000",
+          "max": "0.3000",
+          "distribution": "normal",
+          "mean": "0.2000",
+          "sd": "0.0500"
+        },
+        "lead_time": 1
+      }
+    }
+  },
+  "cash": {
+    "credit_limit": "10000.0000",
+    "credit_interest": "0.0005",
+    "debit_interest": "0.0010",
+    "overdraft_interest": "0.0050"
+  },
+  "groups": {
+    "semiconductors": {
+      "kind": "family",
+      "defaults": {
+        "items": {
+          "space": "0.010",
+          "storage_cost": {
+            "min": "0.0100",
+            "max": "0.0200",
+            "distribution": "triangular",
+            "mode": "0.0150"
+          },
+          "salvage_value": {
+            "min": "0.1000",
+            "max": "0.3000",
+            "distribution": "triangular",
+            "mode": "0.2000"
+          }
+        },
+        "catalogue": {
+          "price": {
+            "min": "0.9000",
+            "max": "1.1000",
+            "distribution": "triangular",
+            "mode": "1.0000",
+            "drawn": "period"
+          },
+          "lead_time": {
+            "min": 3,
+            "max": 4,
+            "distribution": "uniform"
+          },
+          "max_quantity": {
+            "min": "5000.000",
+            "max": "8000.000",
+            "distribution": "triangular",
+            "mode": "6000.000"
+          },
+          "punctuality": {
+            "min": "0.8000",
+            "max": "1.0000",
+            "distribution": "triangular",
+            "mode": "0.9000"
+          },
+          "delay": {
+            "min": 1,
+            "max": 2,
+            "distribution": "uniform"
+          },
+          "completeness": {
+            "min": "0.9000",
+            "max": "1.0000",
+            "distribution": "triangular",
+            "mode": "0.9500"
+          },
+          "acceptance": {
+            "min": "0.9500",
+            "max": "1.0000",
+            "distribution": "triangular",
+            "mode": "0.9800"
+          },
+          "cancellation_fee": {
+            "min": "0.0500",
+            "max": "0.1500",
+            "distribution": "triangular",
+            "mode": "0.1000"
+          },
+          "backfill_delay": {
+            "min": 1,
+            "max": 2,
+            "distribution": "uniform"
+          },
+          "express_lead_time": {
+            "min": 1,
+            "max": 2,
+            "distribution": "uniform"
+          },
+          "express_cost": {
+            "min": "0.2000",
+            "max": "0.4000",
+            "distribution": "triangular",
+            "mode": "0.3000"
+          },
+          "min_quantity": {
+            "min": "100.000",
+            "max": "300.000",
+            "distribution": "triangular",
+            "mode": "200.000"
+          }
+        }
+      }
+    },
+    "optics": {
+      "kind": "family",
+      "defaults": {
+        "items": {
+          "storage_cost": {
+            "min": "0.0100",
+            "max": "0.0300",
+            "distribution": "normal",
+            "mean": "0.0200",
+            "sd": "0.0050"
+          },
+          "salvage_value": {
+            "min": "0.5000",
+            "max": "1.5000",
+            "distribution": "normal",
+            "mean": "1.0000",
+            "sd": "0.2000"
+          }
+        },
+        "catalogue": {
+          "price": {
+            "min": "3.0000",
+            "max": "4.0000",
+            "distribution": "normal",
+            "mean": "3.5000",
+            "sd": "0.2000"
+          },
+          "lead_time": 2,
+          "max_quantity": {
+            "min": "500.000",
+            "max": "1500.000",
+            "distribution": "normal",
+            "mean": "1000.000",
+            "sd": "100.000"
+          },
+          "punctuality": {
+            "min": "0.8000",
+            "max": "1.0000",
+            "distribution": "normal",
+            "mean": "0.9000",
+            "sd": "0.0500"
+          },
+          "delay": 1,
+          "completeness": {
+            "min": "0.9000",
+            "max": "1.0000",
+            "distribution": "normal",
+            "mean": "0.9500",
+            "sd": "0.0200"
+          },
+          "acceptance": {
+            "min": "0.9500",
+            "max": "1.0000",
+            "distribution": "normal",
+            "mean": "0.9800",
+            "sd": "0.0100"
+          },
+          "cancellation_fee": {
+            "min": "0.1000",
+            "max": "0.3000",
+            "distribution": "normal",
+            "mean": "0.2000",
+            "sd": "0.0500"
+          },
+          "backfill_delay": 1,
+          "express_lead_time": 1,
+          "express_cost": {
+            "min": "0.5000",
+            "max": "1.5000",
+            "distribution": "normal",
+            "mean": "1.0000",
+            "sd": "0.2000"
+          },
+          "min_quantity": {
+            "min": "10.000",
+            "max": "30.000",
+            "distribution": "normal",
+            "mean": "20.000",
+            "sd": "5.000"
+          }
+        }
+      }
+    },
+    "far-east": {
+      "kind": "region"
+    },
+    "near-shore": {
+      "kind": "region",
+      "defaults": {
+        "catalogue": {
+          "lead_time": 3,
+          "punctuality": "0.9500",
+          "delay": 1,
+          "completeness": "1.0000",
+          "acceptance": "0.9900"
+        }
+      }
+    },
+    "boards": {
+      "kind": "family",
+      "defaults": {
+        "line_items": {
+          "time": {
+            "min": "0.100",
+            "max": "0.200",
+            "distribution": "triangular",
+            "mode": "0.150"
+          },
+          "cost": {
+            "min": "0.5000",
+            "max": "0.7000",
+            "distribution": "triangular",
+            "mode": "0.6000"
+          },
+          "yield": {
+            "min": "0.9000",
+            "max": "1.0000",
+            "distribution": "triangular",
+            "mode": "0.9500"
+          },
+          "lead_time": {
+            "min": 1,
+            "max": 2,
+            "distribution": "uniform"
+          },
+          "changeover_time": {
+            "min": "1.000",
+            "max": "3.000",
+            "distribution": "triangular",
+            "mode": "2.000"
+          },
+          "changeover_cost": {
+            "min": "10.0000",
+            "max": "30.0000",
+            "distribution": "triangular",
+            "mode": "20.0000"
+          }
+        }
+      }
+    },
+    "panels": {
+      "kind": "family",
+      "defaults": {
+        "line_items": {
+          "time": {
+            "min": "0.100",
+            "max": "0.200",
+            "distribution": "normal",
+            "mean": "0.150",
+            "sd": "0.020"
+          },
+          "cost": {
+            "min": "0.5000",
+            "max": "0.7000",
+            "distribution": "normal",
+            "mean": "0.6000",
+            "sd": "0.0500"
+          },
+          "yield": {
+            "min": "0.9000",
+            "max": "1.0000",
+            "distribution": "normal",
+            "mean": "0.9500",
+            "sd": "0.0200"
+          },
+          "lead_time": 1,
+          "changeover_time": {
+            "min": "1.000",
+            "max": "3.000",
+            "distribution": "normal",
+            "mean": "2.000",
+            "sd": "0.500"
+          },
+          "changeover_cost": {
+            "min": "10.0000",
+            "max": "30.0000",
+            "distribution": "normal",
+            "mean": "20.0000",
+            "sd": "5.0000"
+          }
+        }
+      }
+    },
+    "displays": {
+      "kind": "segment",
+      "defaults": {
+        "items": {
+          "common_share": "0.3000"
+        },
+        "customer_products": {
+          "price": {
+            "min": "40.0000",
+            "max": "50.0000",
+            "distribution": "triangular",
+            "mode": "45.0000"
+          },
+          "transport_cost": {
+            "min": "0.5000",
+            "max": "1.5000",
+            "distribution": "triangular",
+            "mode": "1.0000"
+          },
+          "demand": {
+            "min": "10.000",
+            "max": "20.000",
+            "distribution": "triangular",
+            "mode": "15.000"
+          },
+          "demand_persistence": "0.2000",
+          "lead_time": {
+            "min": 1,
+            "max": 2,
+            "distribution": "uniform"
+          },
+          "patience": {
+            "min": 1,
+            "max": 2,
+            "distribution": "uniform"
+          },
+          "late_penalty": {
+            "min": "1.0000",
+            "max": "3.0000",
+            "distribution": "triangular",
+            "mode": "2.0000"
+          },
+          "lost_sale_penalty": {
+            "min": "5.0000",
+            "max": "10.0000",
+            "distribution": "triangular",
+            "mode": "8.0000"
+          }
+        }
+      }
+    },
+    "handhelds": {
+      "kind": "segment",
+      "defaults": {
+        "customer_products": {
+          "price": {
+            "min": "25.0000",
+            "max": "35.0000",
+            "distribution": "normal",
+            "mean": "30.0000",
+            "sd": "2.0000"
+          },
+          "transport_cost": {
+            "min": "0.5000",
+            "max": "1.5000",
+            "distribution": "normal",
+            "mean": "1.0000",
+            "sd": "0.2000"
+          },
+          "demand": {
+            "min": "10.000",
+            "max": "30.000",
+            "distribution": "normal",
+            "mean": "20.000",
+            "sd": "4.000"
+          },
+          "lead_time": 1,
+          "patience": 2,
+          "late_penalty": {
+            "min": "1.0000",
+            "max": "3.0000",
+            "distribution": "normal",
+            "mean": "2.0000",
+            "sd": "0.5000"
+          },
+          "lost_sale_penalty": {
+            "min": "4.0000",
+            "max": "8.0000",
+            "distribution": "normal",
+            "mean": "6.0000",
+            "sd": "1.0000"
+          }
+        }
+      }
+    },
+    "wholesale": {
+      "kind": "channel",
+      "defaults": {
+        "customers": {
+          "payment_terms": {
+            "min": 1,
+            "max": 3,
+            "distribution": "uniform"
+          }
+        }
+      }
+    },
+    "retail": {
+      "kind": "channel",
+      "defaults": {
+        "customers": {
+          "payment_terms": 0
+        }
+      }
+    },
+    "fast-lines": {
+      "kind": "speed",
+      "defaults": {
+        "lines": {
+          "capacity": {
+            "min": "60.000",
+            "max": "90.000",
+            "distribution": "triangular",
+            "mode": "80.000"
+          },
+          "wear_per_period": {
+            "min": "0.0010",
+            "max": "0.0030",
+            "distribution": "triangular",
+            "mode": "0.0020"
+          },
+          "wear_per_hour": {
+            "min": "0.0010",
+            "max": "0.0030",
+            "distribution": "triangular",
+            "mode": "0.0020"
+          },
+          "breakdown_chance": {
+            "min": "0.0100",
+            "max": "0.0500",
+            "distribution": "triangular",
+            "mode": "0.0200"
+          },
+          "breakdown_loss": {
+            "min": "0.1000",
+            "max": "0.3000",
+            "distribution": "triangular",
+            "mode": "0.2000"
+          },
+          "repair_cost": {
+            "min": "100.0000",
+            "max": "200.0000",
+            "distribution": "triangular",
+            "mode": "150.0000"
+          },
+          "repair_time": {
+            "min": "4.000",
+            "max": "8.000",
+            "distribution": "triangular",
+            "mode": "6.000"
+          },
+          "repair_limit": {
+            "min": "0.5000",
+            "max": "0.7000",
+            "distribution": "triangular",
+            "mode": "0.6000"
+          },
+          "overtime_hours": {
+            "min": "0.000",
+            "max": "16.000",
+            "distribution": "triangular",
+            "mode": "8.000"
+          },
+          "overtime_cost": {
+            "min": "40.0000",
+            "max": "50.0000",
+            "distribution": "triangular",
+            "mode": "45.0000"
+          }
+        }
+      }
+    },
+    "slow-lines": {
+      "kind": "speed",
+      "defaults": {
+        "lines": {
+          "capacity": {
+            "min": "40.000",
+            "max": "80.000",
+            "distribution": "normal",
+            "mean": "60.000",
+            "sd": "5.000"
+          },
+          "wear_per_period": {
+            "min": "0.0010",
+            "max": "0.0030",
+            "distribution": "normal",
+            "mean": "0.0020",
+            "sd": "0.0005"
+          },
+          "wear_per_hour": {
+            "min": "0.0010",
+            "max": "0.0030",
+            "distribution": "normal",
+            "mean": "0.0020",
+            "sd": "0.0005"
+          },
+          "breakdown_chance": {
+            "min": "0.0100",
+            "max": "0.0500",
+            "distribution": "normal",
+            "mean": "0.0200",
+            "sd": "0.0050"
+          },
+          "breakdown_loss": {
+            "min": "0.1000",
+            "max": "0.3000",
+            "distribution": "normal",
+            "mean": "0.2000",
+            "sd": "0.0500"
+          },
+          "repair_cost": {
+            "min": "100.0000",
+            "max": "200.0000",
+            "distribution": "normal",
+            "mean": "150.0000",
+            "sd": "20.0000"
+          },
+          "repair_time": {
+            "min": "4.000",
+            "max": "8.000",
+            "distribution": "normal",
+            "mean": "6.000",
+            "sd": "1.000"
+          },
+          "repair_limit": {
+            "min": "0.5000",
+            "max": "0.7000",
+            "distribution": "normal",
+            "mean": "0.6000",
+            "sd": "0.0500"
+          },
+          "overtime_hours": {
+            "min": "4.000",
+            "max": "12.000",
+            "distribution": "normal",
+            "mean": "8.000",
+            "sd": "2.000"
+          },
+          "overtime_cost": {
+            "min": "40.0000",
+            "max": "50.0000",
+            "distribution": "normal",
+            "mean": "45.0000",
+            "sd": "2.0000"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+# macOS and editors
+.DS_Store
+.vscode/
+.idea/
+
+# Environment and secrets
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+build/
+dist/
+site/
+
+# uv
+.venv/
+
+# Tool caches
+.pytest_cache/
+.ruff_cache/
+.hypothesis/
+.coverage
+
+# Generated data: run databases, exports and reports.
+/data/*
+!/data/.gitkeep
+*.duckdb
+*.duckdb.wal

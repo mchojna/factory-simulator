@@ -1,0 +1,78 @@
+site_name: Factory simulator
+site_url: https://mchojna.github.io/factory-simulator/
+repo_url: https://github.com/mchojna/factory-simulator
+docs_dir: docs
+site_dir: site/public
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle: {icon: material/brightness-7, name: Dark theme}
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle: {icon: material/brightness-4, name: Light theme}
+  features: [navigation.sections, content.code.copy]
+markdown_extensions:
+  - tables
+  - toc:
+      permalink: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds: {case: lower}
+  - pymdownx.highlight
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+plugins:
+  - search
+validation:
+  nav: {omitted_files: warn, not_found: warn}
+  links: {not_found: warn, anchors: warn, unrecognized_links: warn}
+nav:
+  - Start:
+      - Start section: start/README.md
+      - Factory simulator: README.md
+      - Overview: start/overview.md
+      - Quick start: start/quick-start.md
+      - Concepts: start/concepts.md
+  - Rules:
+      - Rules overview: rules/README.md
+      - Period: rules/period.md
+      - Decisions: rules/decisions.md
+      - Information: rules/information.md
+      - Suppliers: rules/suppliers.md
+      - Customers and demand: rules/customers-and-demand.md
+      - Production: rules/production.md
+      - Warehouses and routes: rules/warehouses-and-routes.md
+      - Cash and profit: rules/cash-and-profit.md
+      - Disruptions: rules/disruptions.md
+      - Groups: rules/groups.md
+      - Randomness and fairness: rules/randomness-and-fairness.md
+  - Library:
+      - Library overview: library/README.md
+      - Example factory: library/example-factory.md
+      - Example plant and cash: library/example-plant-and-cash.md
+      - Scenario library: library/scenario-library.md
+  - Benchmark:
+      - Benchmark overview: benchmark/README.md
+      - Playing a run: benchmark/playing-a-run.md
+      - Optimizers: benchmark/optimizers.md
+      - Normalized score: benchmark/score.md
+      - Stress test: benchmark/stress-test.md
+  - Guides:
+      - Guides overview: guides/README.md
+      - Writing a manifest: guides/writing-a-manifest.md
+      - Larger manifests: guides/larger-manifests.md
+      - Writing a scenario: guides/writing-a-scenario.md
+  - Reference:
+      - Reference overview: reference/README.md
+      - HTTP interface: reference/http-interface.md
+      - Manifest fields: reference/manifest-fields.md
+      - Scenario fields: reference/scenario-fields.md
+      - Measures and the record: reference/measures-and-the-record.md
+      - Operational record: reference/operational-record.md
+      - Glossary: reference/glossary.md
+      - Limits: reference/limits.md
+      - Questions: reference/faq.md

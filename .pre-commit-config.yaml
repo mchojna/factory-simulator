@@ -1,0 +1,119 @@
+# Runs automatically before every commit. Install once:
+#
+#   uv run pre-commit install --install-hooks
+#
+# This installs two hook types: pre-commit for the file checks below and commit-msg
+# for the commit message checks.
+#
+# The local hooks at the bottom run through uv run, so ruff, pyright and pytest are
+# the versions pinned in uv.lock, the same ones CI runs. Every other hook is a repo
+# hook whose environment pre-commit builds and pins by rev.
+
+minimum_pre_commit_version: "4.6.0"
+
+default_install_hook_types: [pre-commit, commit-msg]
+
+repos:
+  # File hygiene.
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: check-yaml
+        args: [--unsafe]
+      - id: check-toml
+      - id: check-json
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+        args: [--markdown-linebreak-ext=md]
+      - id: mixed-line-ending
+        args: [--fix=lf]
+      - id: check-merge-conflict
+      - id: check-case-conflict
+      - id: check-symlinks
+      - id: destroyed-symlinks
+      - id: check-added-large-files
+        args: [--maxkb=512, --enforce-all]
+      - id: detect-private-key
+      - id: debug-statements
+
+  # Blocks credentials that are not listed in .secrets.baseline.
+  - repo: https://github.com/Yelp/detect-secrets
+    rev: v1.5.0
+    hooks:
+      - id: detect-secrets
+        args: [--baseline, .secrets.baseline]
+        # Frozen fixtures and exported requirements hold SHA-256 digests.
+        exclude: ^(uv\.lock|requirements\.txt|tests/frozen/.*\.json|tests/unit/api/examples/test_frozen_examples\.py)$
+
+  # Checks the GitHub workflow files.
+  - repo: https://github.com/rhysd/actionlint
+    rev: v1.7.12
+    hooks:
+      - id: actionlint
+
+  # The project's own checks, at the versions pinned in uv.lock.
+  - repo: local
+    hooks:
+      # Every text file holds plain ASCII: no emoji, arrows or typographic quotes.
+      # Author names and package metadata keep their original spelling.
+      - id: ascii-only
+        name: text is ASCII only
+        entry: '[^\x00-\x7F]'
+        language: pygrep
+        types: [text]
+        exclude: ^(uv\.lock|README\.md|CONTRIBUTING\.md|LICENSE\.txt|pyproject\.toml|CITATION\.cff)$
+
+      # The subject line uses one of the nine allowed types, starts in lower case,
+      # has no full stop and fits in 72 characters.
+      - id: commit-subject
+        name: commit subject follows the project rules
+        entry: '\A(feat|fix|docs|refactor|test|chore|perf|build|ci)(\([a-z0-9-]+\))?!?: [a-z][^\n]{0,70}[^.\n]$'
+        language: pygrep
+        args: [--negate, --multiline]
+        stages: [commit-msg]
+
+      # Rejects comments made of repeated symbols, such as a line of dashes.
+      - id: no-divider-comments
+        name: no divider comments
+        entry: '^\s*#\s*([-=_*#~+]{3,}|.*[-=]{5,}\s*$)'
+        language: pygrep
+        types_or: [python, pyi, yaml, toml, shell]
+
+      - id: ruff-format
+        name: ruff format
+        entry: uv run ruff format --force-exclude
+        language: system
+        types_or: [python, pyi, markdown]
+        # Formats the Python blocks of Markdown too, over the files CI formats:
+        # data is left out.
+        exclude: ^data/
+
+      - id: ruff-check
+        name: ruff check
+        entry: uv run ruff check --fix
+        language: system
+        types_or: [python, pyi]
+
+      # Runs when any code, test data or dependency changes.
+      - id: pyright
+        name: pyright
+        entry: uv run pyright
+        language: system
+        files: ^(src/|tests/|examples/|pyproject\.toml$|uv\.lock$)
+        pass_filenames: false
+
+      - id: uv-lock-check
+        name: uv lock is current
+        entry: uv lock --check
+        language: system
+        files: ^(pyproject\.toml|uv\.lock)$
+        pass_filenames: false
+
+      # Runs the unit tests and the doctests except those marked property or slow.
+      # CI runs every test but the stress test.
+      - id: pytest
+        name: pytest (unit tests and doctests)
+        entry: uv run pytest -m "not property and not slow and not stress" --ignore=tests/integration --ignore=tests/e2e --ignore=tests/stress
+        language: system
+        files: ^(src/|tests/|examples/|pyproject\.toml$|uv\.lock$)
+        pass_filenames: false

@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using these metadata."
+type: software
+title: Factory Simulator
+abstract: A factory simulator for research on agents, with an HTTP interface and reproducible run records.
+authors:
+  - family-names: Wodecki
+    given-names: Andrzej
+  - family-names: Godlewski
+    given-names: Wojciech
+  - family-names: Chojna
+    given-names: Michał
+version: 1.0.0
+date-released: 2026-11-03
+license: MIT
+repository-code: https://github.com/mchojna/factory-simulator
+url: https://github.com/mchojna/factory-simulator/releases/tag/v1.0.0
