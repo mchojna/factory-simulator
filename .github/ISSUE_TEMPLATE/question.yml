@@ -1,0 +1,11 @@
+name: Question
+description: Something about the simulator's rules or usage is unclear.
+labels: [question]
+body:
+  - type: textarea
+    id: question
+    attributes:
+      label: Question
+      description: What you want to know, and what you already read to find out.
+    validations:
+      required: true

@@ -1,0 +1,42 @@
+{
+  "name": "forecasts",
+  "description": "Customer base demand is hidden. Forecasts cover the next six periods, with error up to 20 percent one period ahead and an additional increment up to 4 percent at each further distance.",
+  "horizon": 52,
+  "forecasts": [
+    {
+      "target": "all",
+      "periods_ahead": 6,
+      "noise": "0.2000",
+      "noise_growth": "0.0400"
+    }
+  ],
+  "hidden": [
+    "customers.products.demand"
+  ],
+  "start": {
+    "cash": "0.0000",
+    "stock": {
+      "main-plant": {
+        "microchip": "1406.000",
+        "passive-kit": "2234.000",
+        "pcb-blank": "1656.000",
+        "lcd-panel": "295.000",
+        "connector-pins": "1554.000",
+        "copper-wire": "2823.000",
+        "plastic-resin": "415.000",
+        "steel-sheet": "1631.000",
+        "control-board": "564.000",
+        "power-module": "808.000",
+        "sensor-module": "244.000",
+        "display-unit": "290.000",
+        "enclosure": "808.000",
+        "cable-harness": "518.000"
+      },
+      "distribution-centre": {
+        "industrial-controller": "22.500",
+        "smart-monitor": "23.750",
+        "sensor-gateway": "20.000"
+      }
+    }
+  }
+}

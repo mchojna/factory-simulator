@@ -1,0 +1,2195 @@
+{
+ "decisions": [
+  [
+   {
+    "kind": "ship",
+    "order": "order-1-10",
+    "quantity": "13.269",
+    "warehouse": "main-plant"
+   },
+   {
+    "express": false,
+    "kind": "buy",
+    "material": "passive-kit",
+    "quantity": "422.372",
+    "supplier": "emea-electronic-parts",
+    "warehouse": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-1-7",
+    "quantity": "8.485",
+    "warehouse": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-1-1",
+    "quantity": "31.235",
+    "warehouse": "main-plant"
+   },
+   {
+    "express": false,
+    "kind": "buy",
+    "material": "microchip",
+    "quantity": "207.122",
+    "supplier": "apac-chips",
+    "warehouse": "main-plant"
+   },
+   {
+    "item": "power-module",
+    "kind": "produce",
+    "line": "module-assembly-line",
+    "overtime": false,
+    "quantity": "73.020"
+   },
+   {
+    "item": "smart-monitor",
+    "kind": "produce",
+    "line": "final-assembly-line",
+    "overtime": false,
+    "quantity": "131.338"
+   }
+  ],
+  [
+   {
+    "express": false,
+    "kind": "buy",
+    "material": "microchip",
+    "quantity": "1684.737",
+    "supplier": "apac-chips",
+    "warehouse": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-1-3",
+    "quantity": "10.026",
+    "warehouse": "main-plant"
+   },
+   {
+    "destination": "distribution-centre",
+    "item": "passive-kit",
+    "kind": "transfer",
+    "quantity": "610.462",
+    "source": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-1-1",
+    "quantity": "21.313",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "kind": "ship",
+    "order": "order-2-3",
+    "quantity": "10.917",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "express": false,
+    "kind": "buy",
+    "material": "copper-wire",
+    "quantity": "1342.407",
+    "supplier": "amer-metals",
+    "warehouse": "main-plant"
+   }
+  ],
+  [
+   {
+    "kind": "ship",
+    "order": "order-2-10",
+    "quantity": "20.778",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "express": true,
+    "kind": "buy",
+    "material": "plastic-resin",
+    "quantity": "72.442",
+    "supplier": "apac-displays-plastics",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "kind": "ship",
+    "order": "order-2-3",
+    "quantity": "3.103",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "express": true,
+    "kind": "buy",
+    "material": "microchip",
+    "quantity": "1766.768",
+    "supplier": "apac-chips",
+    "warehouse": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-3-6",
+    "quantity": "4.757",
+    "warehouse": "distribution-centre"
+   }
+  ],
+  [
+   {
+    "destination": "distribution-centre",
+    "item": "smart-monitor",
+    "kind": "transfer",
+    "quantity": "8.152",
+    "source": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-3-9",
+    "quantity": "10.040",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "item": "enclosure",
+    "kind": "produce",
+    "line": "moulding-line",
+    "overtime": true,
+    "quantity": "127.421"
+   },
+   {
+    "express": false,
+    "kind": "buy",
+    "material": "steel-sheet",
+    "quantity": "924.679",
+    "supplier": "amer-metals",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "kind": "ship",
+    "order": "order-4-8",
+    "quantity": "32.287",
+    "warehouse": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-2-8",
+    "quantity": "5.399",
+    "warehouse": "main-plant"
+   }
+  ],
+  [
+   {
+    "kind": "ship",
+    "order": "order-2-10",
+    "quantity": "25.639",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "express": false,
+    "kind": "buy",
+    "material": "microchip",
+    "quantity": "1964.967",
+    "supplier": "apac-chips",
+    "warehouse": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-5-8",
+    "quantity": "37.746",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "express": false,
+    "kind": "buy",
+    "material": "copper-wire",
+    "quantity": "775.829",
+    "supplier": "amer-metals",
+    "warehouse": "main-plant"
+   },
+   {
+    "kind": "cancel",
+    "order": "buy-2-1",
+    "quantity": "1356.702"
+   },
+   {
+    "kind": "ship",
+    "order": "order-5-6",
+    "quantity": "6.065",
+    "warehouse": "distribution-centre"
+   }
+  ],
+  [
+   {
+    "kind": "ship",
+    "order": "order-5-4",
+    "quantity": "11.458",
+    "warehouse": "main-plant"
+   },
+   {
+    "kind": "cancel",
+    "order": "buy-5-4",
+    "quantity": "262.865"
+   },
+   {
+    "kind": "ship",
+    "order": "order-1-8",
+    "quantity": "13.065",
+    "warehouse": "main-plant"
+   },
+   {
+    "item": "sensor-module",
+    "kind": "produce",
+    "line": "smt-line",
+    "overtime": false,
+    "quantity": "177.655"
+   },
+   {
+    "amount": "0.1732",
+    "kind": "repair",
+    "line": "module-assembly-line"
+   },
+   {
+    "kind": "ship",
+    "order": "order-5-7",
+    "quantity": "19.546",
+    "warehouse": "distribution-centre"
+   }
+  ],
+  [
+   {
+    "kind": "ship",
+    "order": "order-6-2",
+    "quantity": "11.704",
+    "warehouse": "main-plant"
+   },
+   {
+    "destination": "distribution-centre",
+    "item": "display-unit",
+    "kind": "transfer",
+    "quantity": "94.163",
+    "source": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-7-5",
+    "quantity": "43.098",
+    "warehouse": "main-plant"
+   },
+   {
+    "express": false,
+    "kind": "buy",
+    "material": "lcd-panel",
+    "quantity": "125.898",
+    "supplier": "apac-displays-plastics",
+    "warehouse": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-1-1",
+    "quantity": "6.716",
+    "warehouse": "main-plant"
+   },
+   {
+    "express": false,
+    "kind": "buy",
+    "material": "passive-kit",
+    "quantity": "331.660",
+    "supplier": "amer-metals",
+    "warehouse": "distribution-centre"
+   }
+  ],
+  [
+   {
+    "express": true,
+    "kind": "buy",
+    "material": "pcb-blank",
+    "quantity": "196.209",
+    "supplier": "emea-electronic-parts",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "kind": "ship",
+    "order": "order-5-2",
+    "quantity": "11.639",
+    "warehouse": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-6-3",
+    "quantity": "14.685",
+    "warehouse": "main-plant"
+   },
+   {
+    "destination": "distribution-centre",
+    "item": "control-board",
+    "kind": "transfer",
+    "quantity": "234.024",
+    "source": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-8-6",
+    "quantity": "3.923",
+    "warehouse": "distribution-centre"
+   }
+  ],
+  [
+   {
+    "express": false,
+    "kind": "buy",
+    "material": "lcd-panel",
+    "quantity": "1.779",
+    "supplier": "emea-electronic-parts",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "kind": "ship",
+    "order": "order-4-1",
+    "quantity": "27.442",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "kind": "ship",
+    "order": "order-7-1",
+    "quantity": "26.511",
+    "warehouse": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-8-1",
+    "quantity": "6.161",
+    "warehouse": "distribution-centre"
+   }
+  ],
+  [
+   {
+    "express": true,
+    "kind": "buy",
+    "material": "connector-pins",
+    "quantity": "1075.792",
+    "supplier": "emea-electronic-parts",
+    "warehouse": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-7-9",
+    "quantity": "15.585",
+    "warehouse": "main-plant"
+   },
+   {
+    "destination": "distribution-centre",
+    "item": "control-board",
+    "kind": "transfer",
+    "quantity": "145.967",
+    "source": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-8-1",
+    "quantity": "5.972",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "amount": "0.1395",
+    "kind": "repair",
+    "line": "module-assembly-line"
+   },
+   {
+    "kind": "ship",
+    "order": "order-10-6",
+    "quantity": "10.284",
+    "warehouse": "distribution-centre"
+   }
+  ],
+  [
+   {
+    "item": "enclosure",
+    "kind": "produce",
+    "line": "moulding-line",
+    "overtime": true,
+    "quantity": "72.592"
+   },
+   {
+    "destination": "distribution-centre",
+    "item": "passive-kit",
+    "kind": "transfer",
+    "quantity": "543.754",
+    "source": "main-plant"
+   },
+   {
+    "express": true,
+    "kind": "buy",
+    "material": "copper-wire",
+    "quantity": "1130.878",
+    "supplier": "amer-metals",
+    "warehouse": "main-plant"
+   },
+   {
+    "amount": "0.1913",
+    "kind": "repair",
+    "line": "module-assembly-line"
+   },
+   {
+    "item": "enclosure",
+    "kind": "produce",
+    "line": "moulding-line",
+    "overtime": false,
+    "quantity": "192.520"
+   },
+   {
+    "kind": "ship",
+    "order": "order-11-3",
+    "quantity": "12.205",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "kind": "ship",
+    "order": "order-10-1",
+    "quantity": "6.811",
+    "warehouse": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-11-7",
+    "quantity": "20.977",
+    "warehouse": "main-plant"
+   }
+  ],
+  [
+   {
+    "kind": "ship",
+    "order": "order-10-1",
+    "quantity": "18.378",
+    "warehouse": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-10-8",
+    "quantity": "31.065",
+    "warehouse": "main-plant"
+   },
+   {
+    "express": false,
+    "kind": "buy",
+    "material": "passive-kit",
+    "quantity": "1405.436",
+    "supplier": "amer-metals",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "kind": "ship",
+    "order": "order-10-3",
+    "quantity": "3.561",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "item": "sensor-gateway",
+    "kind": "produce",
+    "line": "final-assembly-line",
+    "overtime": false,
+    "quantity": "60.822"
+   }
+  ],
+  [
+   {
+    "kind": "ship",
+    "order": "order-13-9",
+    "quantity": "0.129",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "destination": "distribution-centre",
+    "item": "passive-kit",
+    "kind": "transfer",
+    "quantity": "2454.625",
+    "source": "main-plant"
+   },
+   {
+    "item": "sensor-module",
+    "kind": "produce",
+    "line": "smt-line",
+    "overtime": false,
+    "quantity": "712.301"
+   },
+   {
+    "kind": "ship",
+    "order": "order-10-4",
+    "quantity": "0.501",
+    "warehouse": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-10-6",
+    "quantity": "6.453",
+    "warehouse": "main-plant"
+   }
+  ],
+  [
+   {
+    "kind": "ship",
+    "order": "order-13-5",
+    "quantity": "22.182",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "kind": "ship",
+    "order": "order-12-10",
+    "quantity": "3.897",
+    "warehouse": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-14-10",
+    "quantity": "13.041",
+    "warehouse": "main-plant"
+   },
+   {
+    "destination": "distribution-centre",
+    "item": "steel-sheet",
+    "kind": "transfer",
+    "quantity": "311.222",
+    "source": "main-plant"
+   },
+   {
+    "express": false,
+    "kind": "buy",
+    "material": "microchip-b",
+    "quantity": "758.419",
+    "supplier": "emea-electronic-parts",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "express": true,
+    "kind": "buy",
+    "material": "copper-wire",
+    "quantity": "2614.793",
+    "supplier": "amer-metals",
+    "warehouse": "distribution-centre"
+   }
+  ],
+  [
+   {
+    "kind": "ship",
+    "order": "order-14-3",
+    "quantity": "6.619",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "express": false,
+    "kind": "buy",
+    "material": "copper-wire",
+    "quantity": "2166.475",
+    "supplier": "amer-metals",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "express": false,
+    "kind": "buy",
+    "material": "microchip",
+    "quantity": "1222.531",
+    "supplier": "apac-chips",
+    "warehouse": "main-plant"
+   },
+   {
+    "amount": "0.0678",
+    "kind": "repair",
+    "line": "smt-line"
+   },
+   {
+    "item": "smart-monitor",
+    "kind": "produce",
+    "line": "final-assembly-line",
+    "overtime": false,
+    "quantity": "77.787"
+   },
+   {
+    "kind": "ship",
+    "order": "order-15-2",
+    "quantity": "0.319",
+    "warehouse": "main-plant"
+   },
+   {
+    "destination": "distribution-centre",
+    "item": "display-unit",
+    "kind": "transfer",
+    "quantity": "10.652",
+    "source": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-15-4",
+    "quantity": "11.561",
+    "warehouse": "main-plant"
+   }
+  ],
+  [
+   {
+    "kind": "ship",
+    "order": "order-15-4",
+    "quantity": "2.122",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "item": "power-module",
+    "kind": "produce",
+    "line": "smt-line",
+    "overtime": false,
+    "quantity": "407.445"
+   },
+   {
+    "kind": "ship",
+    "order": "order-10-8",
+    "quantity": "27.943",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "kind": "ship",
+    "order": "order-15-5",
+    "quantity": "18.805",
+    "warehouse": "distribution-centre"
+   }
+  ],
+  [
+   {
+    "destination": "distribution-centre",
+    "item": "plastic-resin",
+    "kind": "transfer",
+    "quantity": "29.113",
+    "source": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-15-1",
+    "quantity": "8.339",
+    "warehouse": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-16-8",
+    "quantity": "17.171",
+    "warehouse": "main-plant"
+   },
+   {
+    "item": "power-module",
+    "kind": "produce",
+    "line": "smt-line",
+    "overtime": true,
+    "quantity": "65.284"
+   },
+   {
+    "kind": "ship",
+    "order": "order-16-4",
+    "quantity": "1.076",
+    "warehouse": "main-plant"
+   }
+  ],
+  [
+   {
+    "kind": "ship",
+    "order": "order-18-5",
+    "quantity": "23.120",
+    "warehouse": "main-plant"
+   },
+   {
+    "destination": "distribution-centre",
+    "item": "display-unit",
+    "kind": "transfer",
+    "quantity": "2.652",
+    "source": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-15-1",
+    "quantity": "12.671",
+    "warehouse": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-18-6",
+    "quantity": "0.577",
+    "warehouse": "main-plant"
+   }
+  ],
+  [
+   {
+    "kind": "ship",
+    "order": "order-18-7",
+    "quantity": "32.134",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "express": false,
+    "kind": "buy",
+    "material": "passive-kit",
+    "quantity": "2652.112",
+    "supplier": "emea-electronic-parts",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "express": false,
+    "kind": "buy",
+    "material": "lcd-panel",
+    "quantity": "478.038",
+    "supplier": "apac-displays-plastics",
+    "warehouse": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-19-6",
+    "quantity": "3.195",
+    "warehouse": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-15-1",
+    "quantity": "21.267",
+    "warehouse": "main-plant"
+   }
+  ],
+  [
+   {
+    "kind": "ship",
+    "order": "order-20-10",
+    "quantity": "2.926",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "express": false,
+    "kind": "buy",
+    "material": "lcd-panel",
+    "quantity": "76.384",
+    "supplier": "apac-displays-plastics",
+    "warehouse": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-18-5",
+    "quantity": "11.684",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "express": false,
+    "kind": "buy",
+    "material": "microchip",
+    "quantity": "196.034",
+    "supplier": "apac-chips",
+    "warehouse": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-18-10",
+    "quantity": "6.242",
+    "warehouse": "main-plant"
+   },
+   {
+    "item": "enclosure",
+    "kind": "produce",
+    "line": "moulding-line",
+    "overtime": false,
+    "quantity": "272.663"
+   }
+  ],
+  [
+   {
+    "express": false,
+    "kind": "buy",
+    "material": "copper-wire",
+    "quantity": "1506.818",
+    "supplier": "amer-metals",
+    "warehouse": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-19-10",
+    "quantity": "10.634",
+    "warehouse": "main-plant"
+   },
+   {
+    "destination": "distribution-centre",
+    "item": "cable-harness",
+    "kind": "transfer",
+    "quantity": "435.301",
+    "source": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-15-6",
+    "quantity": "0.494",
+    "warehouse": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-21-8",
+    "quantity": "28.252",
+    "warehouse": "main-plant"
+   }
+  ],
+  [
+   {
+    "item": "cable-harness",
+    "kind": "produce",
+    "line": "module-assembly-line",
+    "overtime": false,
+    "quantity": "98.038"
+   },
+   {
+    "kind": "ship",
+    "order": "order-19-5",
+    "quantity": "47.980",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "destination": "distribution-centre",
+    "item": "steel-sheet",
+    "kind": "transfer",
+    "quantity": "613.694",
+    "source": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-22-4",
+    "quantity": "0.118",
+    "warehouse": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-22-5",
+    "quantity": "12.096",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "item": "power-module",
+    "kind": "produce",
+    "line": "smt-line",
+    "overtime": true,
+    "quantity": "270.763"
+   }
+  ],
+  [
+   {
+    "kind": "ship",
+    "order": "order-19-1",
+    "quantity": "10.085",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "amount": "0.1518",
+    "kind": "repair",
+    "line": "smt-line"
+   },
+   {
+    "destination": "distribution-centre",
+    "item": "control-board",
+    "kind": "transfer",
+    "quantity": "69.217",
+    "source": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-22-9",
+    "quantity": "4.104",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "item": "cable-harness",
+    "kind": "produce",
+    "line": "module-assembly-line",
+    "overtime": true,
+    "quantity": "395.764"
+   },
+   {
+    "express": false,
+    "kind": "buy",
+    "material": "pcb-blank",
+    "quantity": "194.011",
+    "supplier": "emea-electronic-parts",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "kind": "ship",
+    "order": "order-22-6",
+    "quantity": "6.171",
+    "warehouse": "distribution-centre"
+   }
+  ],
+  [
+   {
+    "kind": "ship",
+    "order": "order-22-10",
+    "quantity": "24.670",
+    "warehouse": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-21-7",
+    "quantity": "10.438",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "kind": "ship",
+    "order": "order-19-8",
+    "quantity": "41.470",
+    "warehouse": "main-plant"
+   },
+   {
+    "destination": "distribution-centre",
+    "item": "enclosure",
+    "kind": "transfer",
+    "quantity": "113.892",
+    "source": "main-plant"
+   },
+   {
+    "express": false,
+    "kind": "buy",
+    "material": "plastic-resin",
+    "quantity": "213.900",
+    "supplier": "apac-displays-plastics",
+    "warehouse": "main-plant"
+   },
+   {
+    "amount": "0.1630",
+    "kind": "repair",
+    "line": "module-assembly-line"
+   }
+  ],
+  [
+   {
+    "kind": "ship",
+    "order": "order-23-9",
+    "quantity": "7.430",
+    "warehouse": "main-plant"
+   },
+   {
+    "express": false,
+    "kind": "buy",
+    "material": "connector-pins",
+    "quantity": "917.438",
+    "supplier": "emea-electronic-parts",
+    "warehouse": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-22-7",
+    "quantity": "15.154",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "kind": "ship",
+    "order": "order-22-3",
+    "quantity": "4.672",
+    "warehouse": "main-plant"
+   },
+   {
+    "item": "display-unit",
+    "kind": "produce",
+    "line": "module-assembly-line",
+    "overtime": false,
+    "quantity": "0.484"
+   },
+   {
+    "amount": "0.0190",
+    "kind": "repair",
+    "line": "smt-line"
+   }
+  ],
+  [
+   {
+    "kind": "ship",
+    "order": "order-26-2",
+    "quantity": "21.906",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "item": "power-module",
+    "kind": "produce",
+    "line": "smt-line",
+    "overtime": false,
+    "quantity": "106.989"
+   },
+   {
+    "express": true,
+    "kind": "buy",
+    "material": "lcd-panel",
+    "quantity": "312.167",
+    "supplier": "apac-displays-plastics",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "kind": "ship",
+    "order": "order-23-9",
+    "quantity": "0.990",
+    "warehouse": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-20-6",
+    "quantity": "0.005",
+    "warehouse": "main-plant"
+   }
+  ],
+  [
+   {
+    "kind": "ship",
+    "order": "order-22-6",
+    "quantity": "9.405",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "item": "enclosure",
+    "kind": "produce",
+    "line": "moulding-line",
+    "overtime": false,
+    "quantity": "231.927"
+   },
+   {
+    "kind": "ship",
+    "order": "order-24-2",
+    "quantity": "9.266",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "express": true,
+    "kind": "buy",
+    "material": "passive-kit",
+    "quantity": "1962.695",
+    "supplier": "emea-electronic-parts",
+    "warehouse": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-27-10",
+    "quantity": "13.594",
+    "warehouse": "main-plant"
+   },
+   {
+    "destination": "distribution-centre",
+    "item": "steel-sheet",
+    "kind": "transfer",
+    "quantity": "870.544",
+    "source": "main-plant"
+   },
+   {
+    "item": "sensor-gateway",
+    "kind": "produce",
+    "line": "final-assembly-line",
+    "overtime": false,
+    "quantity": "332.711"
+   },
+   {
+    "express": false,
+    "kind": "buy",
+    "material": "microchip",
+    "quantity": "258.576",
+    "supplier": "apac-chips",
+    "warehouse": "main-plant"
+   }
+  ],
+  [
+   {
+    "express": true,
+    "kind": "buy",
+    "material": "passive-kit",
+    "quantity": "172.713",
+    "supplier": "amer-metals",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "express": false,
+    "kind": "buy",
+    "material": "steel-sheet",
+    "quantity": "341.303",
+    "supplier": "amer-metals",
+    "warehouse": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-28-9",
+    "quantity": "20.354",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "kind": "ship",
+    "order": "order-27-3",
+    "quantity": "0.838",
+    "warehouse": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-23-1",
+    "quantity": "30.903",
+    "warehouse": "main-plant"
+   }
+  ],
+  [
+   {
+    "item": "power-module",
+    "kind": "produce",
+    "line": "module-assembly-line",
+    "overtime": true,
+    "quantity": "165.713"
+   },
+   {
+    "kind": "ship",
+    "order": "order-27-9",
+    "quantity": "10.837",
+    "warehouse": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-26-4",
+    "quantity": "7.552",
+    "warehouse": "main-plant"
+   },
+   {
+    "item": "control-board",
+    "kind": "produce",
+    "line": "smt-line",
+    "overtime": false,
+    "quantity": "469.020"
+   },
+   {
+    "destination": "distribution-centre",
+    "item": "sensor-gateway",
+    "kind": "transfer",
+    "quantity": "224.024",
+    "source": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-25-1",
+    "quantity": "12.588",
+    "warehouse": "distribution-centre"
+   }
+  ],
+  [
+   {
+    "kind": "ship",
+    "order": "order-28-6",
+    "quantity": "2.775",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "kind": "ship",
+    "order": "order-27-6",
+    "quantity": "12.176",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "express": true,
+    "kind": "buy",
+    "material": "plastic-resin",
+    "quantity": "480.557",
+    "supplier": "apac-displays-plastics",
+    "warehouse": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-24-8",
+    "quantity": "23.830",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "express": false,
+    "kind": "buy",
+    "material": "lcd-panel",
+    "quantity": "369.584",
+    "supplier": "apac-displays-plastics",
+    "warehouse": "main-plant"
+   }
+  ],
+  [
+   {
+    "destination": "distribution-centre",
+    "item": "plastic-resin",
+    "kind": "transfer",
+    "quantity": "318.935",
+    "source": "main-plant"
+   },
+   {
+    "item": "power-module",
+    "kind": "produce",
+    "line": "module-assembly-line",
+    "overtime": false,
+    "quantity": "207.888"
+   },
+   {
+    "kind": "ship",
+    "order": "order-26-1",
+    "quantity": "9.497",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "kind": "ship",
+    "order": "order-28-2",
+    "quantity": "4.601",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "kind": "ship",
+    "order": "order-25-8",
+    "quantity": "22.925",
+    "warehouse": "distribution-centre"
+   }
+  ],
+  [
+   {
+    "express": false,
+    "kind": "buy",
+    "material": "lcd-panel",
+    "quantity": "457.167",
+    "supplier": "emea-electronic-parts",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "kind": "ship",
+    "order": "order-26-6",
+    "quantity": "1.313",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "kind": "ship",
+    "order": "order-29-8",
+    "quantity": "12.461",
+    "warehouse": "main-plant"
+   },
+   {
+    "item": "enclosure",
+    "kind": "produce",
+    "line": "moulding-line",
+    "overtime": false,
+    "quantity": "271.005"
+   },
+   {
+    "destination": "distribution-centre",
+    "item": "control-board",
+    "kind": "transfer",
+    "quantity": "9.656",
+    "source": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-30-2",
+    "quantity": "17.105",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "item": "enclosure",
+    "kind": "produce",
+    "line": "moulding-line",
+    "overtime": false,
+    "quantity": "105.708"
+   }
+  ],
+  [
+   {
+    "kind": "ship",
+    "order": "order-28-8",
+    "quantity": "27.133",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "destination": "distribution-centre",
+    "item": "passive-kit",
+    "kind": "transfer",
+    "quantity": "184.604",
+    "source": "main-plant"
+   },
+   {
+    "item": "control-board",
+    "kind": "produce",
+    "line": "smt-line",
+    "overtime": false,
+    "quantity": "189.152"
+   },
+   {
+    "kind": "ship",
+    "order": "order-30-7",
+    "quantity": "14.439",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "kind": "ship",
+    "order": "order-29-6",
+    "quantity": "3.236",
+    "warehouse": "distribution-centre"
+   }
+  ],
+  [
+   {
+    "kind": "ship",
+    "order": "order-32-10",
+    "quantity": "17.862",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "kind": "ship",
+    "order": "order-31-10",
+    "quantity": "35.139",
+    "warehouse": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-34-7",
+    "quantity": "16.844",
+    "warehouse": "main-plant"
+   }
+  ],
+  [
+   {
+    "destination": "distribution-centre",
+    "item": "steel-sheet",
+    "kind": "transfer",
+    "quantity": "300.765",
+    "source": "main-plant"
+   },
+   {
+    "amount": "0.1133",
+    "kind": "repair",
+    "line": "final-assembly-line"
+   },
+   {
+    "item": "enclosure",
+    "kind": "produce",
+    "line": "moulding-line",
+    "overtime": false,
+    "quantity": "296.049"
+   },
+   {
+    "kind": "ship",
+    "order": "order-32-5",
+    "quantity": "35.097",
+    "warehouse": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-32-7",
+    "quantity": "28.829",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "express": false,
+    "kind": "buy",
+    "material": "lcd-panel",
+    "quantity": "387.905",
+    "supplier": "apac-displays-plastics",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "kind": "ship",
+    "order": "order-32-10",
+    "quantity": "3.262",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "express": false,
+    "kind": "buy",
+    "material": "steel-sheet",
+    "quantity": "1289.826",
+    "supplier": "amer-metals",
+    "warehouse": "distribution-centre"
+   }
+  ],
+  [
+   {
+    "kind": "ship",
+    "order": "order-35-4",
+    "quantity": "8.139",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "amount": "0.1002",
+    "kind": "repair",
+    "line": "moulding-line"
+   },
+   {
+    "kind": "ship",
+    "order": "order-33-3",
+    "quantity": "2.222",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "kind": "ship",
+    "order": "order-31-6",
+    "quantity": "3.856",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "express": false,
+    "kind": "buy",
+    "material": "lcd-panel",
+    "quantity": "329.772",
+    "supplier": "apac-displays-plastics",
+    "warehouse": "distribution-centre"
+   }
+  ],
+  [
+   {
+    "item": "sensor-gateway",
+    "kind": "produce",
+    "line": "final-assembly-line",
+    "overtime": false,
+    "quantity": "72.061"
+   },
+   {
+    "kind": "ship",
+    "order": "order-36-7",
+    "quantity": "21.655",
+    "warehouse": "main-plant"
+   },
+   {
+    "item": "display-unit",
+    "kind": "produce",
+    "line": "module-assembly-line",
+    "overtime": false,
+    "quantity": "205.880"
+   },
+   {
+    "kind": "ship",
+    "order": "order-34-2",
+    "quantity": "8.947",
+    "warehouse": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-37-3",
+    "quantity": "26.518",
+    "warehouse": "main-plant"
+   },
+   {
+    "destination": "distribution-centre",
+    "item": "plastic-resin",
+    "kind": "transfer",
+    "quantity": "130.867",
+    "source": "main-plant"
+   }
+  ],
+  [
+   {
+    "item": "industrial-controller",
+    "kind": "produce",
+    "line": "final-assembly-line",
+    "overtime": true,
+    "quantity": "63.300"
+   },
+   {
+    "kind": "ship",
+    "order": "order-36-4",
+    "quantity": "5.791",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "kind": "ship",
+    "order": "order-32-6",
+    "quantity": "11.999",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "kind": "ship",
+    "order": "order-36-1",
+    "quantity": "18.796",
+    "warehouse": "distribution-centre"
+   }
+  ],
+  [
+   {
+    "kind": "ship",
+    "order": "order-37-10",
+    "quantity": "11.596",
+    "warehouse": "main-plant"
+   },
+   {
+    "item": "power-module",
+    "kind": "produce",
+    "line": "smt-line",
+    "overtime": false,
+    "quantity": "10.102"
+   },
+   {
+    "kind": "ship",
+    "order": "order-35-8",
+    "quantity": "28.523",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "kind": "ship",
+    "order": "order-36-5",
+    "quantity": "23.465",
+    "warehouse": "main-plant"
+   },
+   {
+    "destination": "distribution-centre",
+    "item": "sensor-gateway",
+    "kind": "transfer",
+    "quantity": "22.455",
+    "source": "main-plant"
+   },
+   {
+    "item": "enclosure",
+    "kind": "produce",
+    "line": "moulding-line",
+    "overtime": false,
+    "quantity": "21.989"
+   }
+  ],
+  [
+   {
+    "kind": "ship",
+    "order": "order-37-7",
+    "quantity": "26.427",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "express": false,
+    "kind": "buy",
+    "material": "passive-kit",
+    "quantity": "1427.114",
+    "supplier": "amer-metals",
+    "warehouse": "main-plant"
+   },
+   {
+    "destination": "distribution-centre",
+    "item": "display-unit",
+    "kind": "transfer",
+    "quantity": "60.047",
+    "source": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-34-6",
+    "quantity": "11.761",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "item": "smart-monitor",
+    "kind": "produce",
+    "line": "final-assembly-line",
+    "overtime": false,
+    "quantity": "239.868"
+   },
+   {
+    "express": false,
+    "kind": "buy",
+    "material": "steel-sheet",
+    "quantity": "152.321",
+    "supplier": "amer-metals",
+    "warehouse": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-37-3",
+    "quantity": "0.761",
+    "warehouse": "distribution-centre"
+   }
+  ],
+  [
+   {
+    "kind": "ship",
+    "order": "order-39-7",
+    "quantity": "17.379",
+    "warehouse": "main-plant"
+   },
+   {
+    "item": "sensor-gateway",
+    "kind": "produce",
+    "line": "final-assembly-line",
+    "overtime": false,
+    "quantity": "207.128"
+   },
+   {
+    "kind": "ship",
+    "order": "order-35-1",
+    "quantity": "18.038",
+    "warehouse": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-39-1",
+    "quantity": "1.145",
+    "warehouse": "main-plant"
+   },
+   {
+    "express": false,
+    "kind": "buy",
+    "material": "passive-kit",
+    "quantity": "2855.170",
+    "supplier": "amer-metals",
+    "warehouse": "main-plant"
+   },
+   {
+    "item": "power-module",
+    "kind": "produce",
+    "line": "smt-line",
+    "overtime": true,
+    "quantity": "520.099"
+   }
+  ],
+  [
+   {
+    "kind": "ship",
+    "order": "order-39-5",
+    "quantity": "64.339",
+    "warehouse": "main-plant"
+   },
+   {
+    "destination": "distribution-centre",
+    "item": "cable-harness",
+    "kind": "transfer",
+    "quantity": "153.337",
+    "source": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-38-6",
+    "quantity": "13.186",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "kind": "ship",
+    "order": "order-41-8",
+    "quantity": "38.414",
+    "warehouse": "main-plant"
+   }
+  ],
+  [
+   {
+    "kind": "ship",
+    "order": "order-43-2",
+    "quantity": "16.216",
+    "warehouse": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-41-2",
+    "quantity": "0.034",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "kind": "ship",
+    "order": "order-40-10",
+    "quantity": "28.247",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "item": "sensor-gateway",
+    "kind": "produce",
+    "line": "final-assembly-line",
+    "overtime": false,
+    "quantity": "65.981"
+   },
+   {
+    "express": true,
+    "kind": "buy",
+    "material": "lcd-panel",
+    "quantity": "277.627",
+    "supplier": "apac-displays-plastics",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "item": "smart-monitor",
+    "kind": "produce",
+    "line": "final-assembly-line",
+    "overtime": false,
+    "quantity": "251.875"
+   },
+   {
+    "express": false,
+    "kind": "buy",
+    "material": "lcd-panel",
+    "quantity": "36.830",
+    "supplier": "apac-displays-plastics",
+    "warehouse": "main-plant"
+   }
+  ],
+  [
+   {
+    "kind": "ship",
+    "order": "order-42-1",
+    "quantity": "14.048",
+    "warehouse": "main-plant"
+   },
+   {
+    "item": "power-module",
+    "kind": "produce",
+    "line": "module-assembly-line",
+    "overtime": false,
+    "quantity": "295.324"
+   },
+   {
+    "item": "control-board",
+    "kind": "produce",
+    "line": "smt-line",
+    "overtime": false,
+    "quantity": "6.216"
+   },
+   {
+    "kind": "ship",
+    "order": "order-38-1",
+    "quantity": "22.431",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "express": false,
+    "kind": "buy",
+    "material": "steel-sheet",
+    "quantity": "1726.529",
+    "supplier": "amer-metals",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "kind": "ship",
+    "order": "order-41-10",
+    "quantity": "16.921",
+    "warehouse": "main-plant"
+   }
+  ],
+  [
+   {
+    "kind": "ship",
+    "order": "order-39-6",
+    "quantity": "4.083",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "express": false,
+    "kind": "buy",
+    "material": "microchip",
+    "quantity": "923.787",
+    "supplier": "apac-chips",
+    "warehouse": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-45-8",
+    "quantity": "17.988",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "express": false,
+    "kind": "buy",
+    "material": "copper-wire",
+    "quantity": "3120.715",
+    "supplier": "emea-electronic-parts",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "kind": "ship",
+    "order": "order-45-9",
+    "quantity": "24.841",
+    "warehouse": "main-plant"
+   }
+  ],
+  [
+   {
+    "item": "sensor-module",
+    "kind": "produce",
+    "line": "smt-line",
+    "overtime": false,
+    "quantity": "656.034"
+   },
+   {
+    "express": false,
+    "kind": "buy",
+    "material": "steel-sheet",
+    "quantity": "1951.665",
+    "supplier": "amer-metals",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "kind": "ship",
+    "order": "order-44-1",
+    "quantity": "24.987",
+    "warehouse": "main-plant"
+   },
+   {
+    "express": false,
+    "kind": "buy",
+    "material": "plastic-resin",
+    "quantity": "25.482",
+    "supplier": "apac-displays-plastics",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "destination": "distribution-centre",
+    "item": "power-module",
+    "kind": "transfer",
+    "quantity": "757.117",
+    "source": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-40-6",
+    "quantity": "3.323",
+    "warehouse": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-41-8",
+    "quantity": "32.278",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "amount": "0.1376",
+    "kind": "repair",
+    "line": "final-assembly-line"
+   }
+  ],
+  [
+   {
+    "express": false,
+    "kind": "buy",
+    "material": "microchip",
+    "quantity": "1678.029",
+    "supplier": "apac-chips",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "kind": "ship",
+    "order": "order-47-10",
+    "quantity": "26.635",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "kind": "ship",
+    "order": "order-44-9",
+    "quantity": "13.245",
+    "warehouse": "main-plant"
+   },
+   {
+    "express": true,
+    "kind": "buy",
+    "material": "steel-sheet",
+    "quantity": "2179.395",
+    "supplier": "amer-metals",
+    "warehouse": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-47-2",
+    "quantity": "19.519",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "item": "industrial-controller",
+    "kind": "produce",
+    "line": "final-assembly-line",
+    "overtime": false,
+    "quantity": "32.869"
+   },
+   {
+    "destination": "distribution-centre",
+    "item": "enclosure",
+    "kind": "transfer",
+    "quantity": "426.403",
+    "source": "main-plant"
+   },
+   {
+    "amount": "0.0672",
+    "kind": "repair",
+    "line": "moulding-line"
+   }
+  ],
+  [
+   {
+    "destination": "distribution-centre",
+    "item": "connector-pins",
+    "kind": "transfer",
+    "quantity": "569.842",
+    "source": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-48-2",
+    "quantity": "14.680",
+    "warehouse": "main-plant"
+   },
+   {
+    "item": "sensor-module",
+    "kind": "produce",
+    "line": "smt-line",
+    "overtime": false,
+    "quantity": "250.318"
+   },
+   {
+    "item": "power-module",
+    "kind": "produce",
+    "line": "module-assembly-line",
+    "overtime": false,
+    "quantity": "174.938"
+   },
+   {
+    "kind": "ship",
+    "order": "order-42-8",
+    "quantity": "11.598",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "kind": "ship",
+    "order": "order-47-9",
+    "quantity": "2.348",
+    "warehouse": "distribution-centre"
+   }
+  ],
+  [
+   {
+    "kind": "ship",
+    "order": "order-48-8",
+    "quantity": "33.581",
+    "warehouse": "main-plant"
+   },
+   {
+    "item": "power-module",
+    "kind": "produce",
+    "line": "module-assembly-line",
+    "overtime": true,
+    "quantity": "65.589"
+   },
+   {
+    "express": false,
+    "kind": "buy",
+    "material": "microchip",
+    "quantity": "867.878",
+    "supplier": "apac-chips",
+    "warehouse": "main-plant"
+   },
+   {
+    "express": false,
+    "kind": "buy",
+    "material": "connector-pins",
+    "quantity": "705.320",
+    "supplier": "emea-electronic-parts",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "kind": "ship",
+    "order": "order-48-10",
+    "quantity": "29.595",
+    "warehouse": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-47-4",
+    "quantity": "13.657",
+    "warehouse": "main-plant"
+   },
+   {
+    "item": "industrial-controller",
+    "kind": "produce",
+    "line": "final-assembly-line",
+    "overtime": false,
+    "quantity": "83.072"
+   },
+   {
+    "destination": "distribution-centre",
+    "item": "sensor-module",
+    "kind": "transfer",
+    "quantity": "11.632",
+    "source": "main-plant"
+   }
+  ],
+  [
+   {
+    "express": false,
+    "kind": "buy",
+    "material": "lcd-panel",
+    "quantity": "339.738",
+    "supplier": "apac-displays-plastics",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "destination": "distribution-centre",
+    "item": "copper-wire",
+    "kind": "transfer",
+    "quantity": "1977.122",
+    "source": "main-plant"
+   },
+   {
+    "express": false,
+    "kind": "buy",
+    "material": "microchip-b",
+    "quantity": "168.717",
+    "supplier": "emea-electronic-parts",
+    "warehouse": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-45-6",
+    "quantity": "0.430",
+    "warehouse": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-48-4",
+    "quantity": "0.700",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "item": "sensor-gateway",
+    "kind": "produce",
+    "line": "final-assembly-line",
+    "overtime": false,
+    "quantity": "239.325"
+   },
+   {
+    "amount": "0.1966",
+    "kind": "repair",
+    "line": "moulding-line"
+   },
+   {
+    "kind": "ship",
+    "order": "order-48-6",
+    "quantity": "1.578",
+    "warehouse": "distribution-centre"
+   }
+  ],
+  [
+   {
+    "amount": "0.0333",
+    "kind": "repair",
+    "line": "final-assembly-line"
+   },
+   {
+    "kind": "ship",
+    "order": "order-51-2",
+    "quantity": "0.782",
+    "warehouse": "main-plant"
+   },
+   {
+    "express": false,
+    "kind": "buy",
+    "material": "microchip",
+    "quantity": "1842.021",
+    "supplier": "apac-chips",
+    "warehouse": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-48-3",
+    "quantity": "20.471",
+    "warehouse": "main-plant"
+   },
+   {
+    "item": "control-board",
+    "kind": "produce",
+    "line": "smt-line",
+    "overtime": false,
+    "quantity": "237.425"
+   },
+   {
+    "kind": "ship",
+    "order": "order-48-2",
+    "quantity": "11.139",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "item": "enclosure",
+    "kind": "produce",
+    "line": "moulding-line",
+    "overtime": false,
+    "quantity": "89.138"
+   }
+  ],
+  [
+   {
+    "kind": "ship",
+    "order": "order-46-6",
+    "quantity": "0.061",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "kind": "ship",
+    "order": "order-51-4",
+    "quantity": "9.389",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "express": false,
+    "kind": "buy",
+    "material": "microchip",
+    "quantity": "763.420",
+    "supplier": "apac-chips",
+    "warehouse": "main-plant"
+   },
+   {
+    "kind": "ship",
+    "order": "order-50-2",
+    "quantity": "1.547",
+    "warehouse": "distribution-centre"
+   },
+   {
+    "destination": "distribution-centre",
+    "item": "sensor-gateway",
+    "kind": "transfer",
+    "quantity": "4.638",
+    "source": "main-plant"
+   },
+   {
+    "express": false,
+    "kind": "buy",
+    "material": "connector-pins",
+    "quantity": "1756.312",
+    "supplier": "emea-electronic-parts",
+    "warehouse": "main-plant"
+   }
+  ]
+ ],
+ "responses": [
+  "0fd815bc1e02038400afb3c39a3a929bc725fdd425e209532628c8b90f9ce9bc",
+  "a34c858f38fa75e8cc4cde9463422c816a328dee5377ef5773d95c5e6a1745ba",
+  "0b463434663b985e3d11882a8ca334be6ea9e81ca346a9a0d60e45c15db881a1",
+  "bdec10bba17a0e67ea9f4b82f864989401133050ddf7c3055c89196237691383",
+  "38b0eea11ed63bc27530c51accfa8f4b05ae538e05f6b182063d98613f8f1a0d",
+  "a3cec3f5ca8761d1bd79a97c3b7f1caf3ba5b749551fd424645ce6890c8605ac",
+  "64f431a8b3b85b057b31f25cfd9b42251235ab4e60f12c1fab9cb482eb358c46",
+  "a7ec5b449d3a4952325571fabcb36353524a0125b3e95bb5c5f7e36a319d4978",
+  "a2c92836783ccd35e154b2867ab3cb2eb72fcafe9878cb6f411dfd51cc9f54ae",
+  "d6be3938c75b738b2f5580b56f725d5d97a54c27384687ea900aa15b5ee87076",
+  "f700fae21823969298826819f1cc5ccf957ff5702df8f00d07e948d54c0aae44",
+  "a3083fc1c8bdf6c48a42c8dc31957efafecdf682e4b1137326526a4f21a81493",
+  "261002d61d47bd12b907fa1587ea307daa20ac03f01d05d4edac9b1e4936da00",
+  "b0fdaf6c79482f937144f25a05ddd1dd4d914b76407a33dbd42c979f6d6013df",
+  "235f95e3be33b2f7ab16b0a178cc131ccf9d5b1ed277c13a0b5e953ea168a9a6",
+  "be6d0fe65c8ff76a2a4793e5beeec6b3f38e5433f4cbaead6507106c0aee677a",
+  "107f3f81e3a859eb5b10b0cfa06f2b41069207d80ff99c87235343186c60e006",
+  "ea55fa6ac62060a830f83b2813da9715879627d72fccf4cee73c8f1f6d73eb76",
+  "691a7c958f4af6e61e9fde5cdd4afdbb0a1b6d4325d8a2204e18062a2ff25814",
+  "389c674e91d26c8090dd33ac118cb34af9473ae4452fbb7f9f97542459cfc445",
+  "a25ac7311ea86238580a66ddfd3a6b2b11c0f7e1af1af05a93cd7eb17913ee89",
+  "980bdafd9a6e91a7ff6f1f1419bface7c36825770a5a63b5a693f330e6244c99",
+  "8c89451aa7fd8bd66101c74e581f7fd0705cf34536e59aff6521531931b609f7",
+  "bf84944d4136835f6ab081acf303d2d15aa4de8a06f6fc3cf40e6b45d9ab7f13",
+  "eadb93ca2d6958125587dad1fe86df1389523641b7abe5fd04be788e08af49b0",
+  "a94f8c9ef8196b28a5bf6bccaa478f23208cdabd49d4a56775c26461473034d6",
+  "90880f7fb056789339bebe4c2c97a95369a11b83da1bdac3bf6a6fc51cf75340",
+  "e0a407be2aedcc6c096ee8101dcd76ca6a83cf54b24d7d5b3b43b0d84359234f",
+  "884bb32bfebb25e49c9721930df2b29751b9b49232fe1062878ac4d5c6ba330b",
+  "d21a658defd5dcb63f68d652d18e055948918e117fbfb6e4354d4b6a08e3338e",
+  "18ccf979b52995ea28f9fd5b8bc0daebf5125b25d52ce7339e71a3dcd849676c",
+  "bb932b2c9530149e5e0c6912cda529624805c181e8f78e4b24e56dc92054135b",
+  "bfe70483c73f8a956961e296384b3bb02d91c232c4d34de597cc28fd66ed7c7f",
+  "62120d65434a9bad2ead84dcc47a47192012a4bcf76fde3e3a43671292e65f47",
+  "da803b6c9ed992206f1b952ec9b5dcc12e5552c70dba4e88097aa432db30de1c",
+  "38dd995f813e26ab35f35ee8ae7428e540971dcb9f672975777a3558b00e7fa4",
+  "320e7f13ad40b004a3fd81c16d55f7476844535a69cbb8d4c0ebea93d366997d",
+  "440ea85ba782703487ceeafc00d95c43a7e029d0e014da26c66a49dadea1d4e0",
+  "2ec3f18ea8ffd79ceacac4ea7a69a984cd6243e924bcde332780907d4afd5395",
+  "237664e055ab11230084c62674cac9bd579b3bd7ac7d142c33ff0c7d53281042",
+  "9b2a3d86a7de41f97f0c91a5931b495fb2fa6885daac35b5caf65ba1787f5cae",
+  "31bbda225183f16b5ebed055bae8730110118c951c99103bdbdff52b8a41c717",
+  "80e701c8a098cc5fbad207771e091bb3dfba7318af45988bab1bf894da8b18b3",
+  "c8bce75098b7af6ff5219da9c8129248bddd106e629e8875c99701c86f3f5b13",
+  "dcfce5a573f2c282ed8166d938cd1d37194f945349e545c45ffb1aff42484407",
+  "58c70f695ed18f73ba1d8c105dd9b3604dbc8dde8e3c6580816d915c26e8dae2",
+  "c1d933daf23f5f40e4d69853e9eb73dc7ef694047ba6cc91ebb219407b75bd1f",
+  "264aaa053d36c8bc82cc641e53da6da6776b30dbab44b83cf87d672fd5f397c0",
+  "489953026b92cd67f86b480f478027dfca4b55db7fe4fe4f6d14b50ffd765a89",
+  "fcd1a221d136b82084d1a1bf88d7729dfe1f4d9ad1a32bacf0f3eb3f15229fa1",
+  "deb8b4596982e6406abefa1e42aa33094a3fd670e5a58472c1d832a39b1f1d51",
+  "a22e3813a150e48452ff484486fa31719da179f2946badc48e8c601793197227",
+  "160e5dd49abb466d281bcf224546f1ac1f65ebd6d6b537aa22bcc5583e273ea2",
+  "2089c38fcd2ea0a5590685ca71fece7aae6f517719e4838990963ca96bb03e6f"
+ ],
+ "tables": {
+  "events": "b62c1d40c53e718f3f112f8c6366e9ddd0b7481ee1e79af14936d62ef5dddf24",
+  "ledger": "d3c4096e1087c220c1bd6c4985d060aa8a7f8a4bb4e623d5faa7170c8f811256",
+  "measures": "18f8e677e05caa985e456a255566cd05572c5c138c8054caab8571c54d2eb223",
+  "outcomes": "41cd93ef7bb56379350b2cfcd681746367ad809abbd351d4790b6feda3da290b",
+  "periods": "e757d84bbdd1186d18138d8d2147851293123ae9427bfc45240b988a7c96edcb",
+  "results": "e816a6e02129296118dbe72978d6e9134527a7abca523e570214bf6e3e6a2912",
+  "runs": "7f68d4194cab240eeccdb87990334d859e206540d162e5735921edb788456384",
+  "worlds": "b091f69b82bc92d6fd916e04d245cb0d404c54484041afe73c64b9746d8695a8"
+ }
+}

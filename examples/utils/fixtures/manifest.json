@@ -1,0 +1,79 @@
+{
+  "name": "Bounded example factory",
+  "materials": {
+    "chip": {
+      "space": "0.010",
+      "storage_cost": "0.0000",
+      "salvage_value": "0.1000"
+    }
+  },
+  "components": {
+    "board": {
+      "space": "0.020",
+      "storage_cost": "0.0000",
+      "salvage_value": "0.5000",
+      "recipes": {"standard": {"chip": "2.000"}}
+    }
+  },
+  "products": {
+    "monitor": {
+      "space": "0.150",
+      "storage_cost": "0.0000",
+      "salvage_value": "2.0000",
+      "recipes": {"standard": {"board": "2.000"}}
+    }
+  },
+  "suppliers": {
+    "chip-maker": {
+      "catalogue": {
+        "chip": {
+          "price": "0.5000",
+          "lead_time": 1,
+          "max_quantity": "1000.000",
+          "punctuality": "1.0000",
+          "delay": 1,
+          "completeness": "1.0000",
+          "acceptance": "1.0000"
+        }
+      }
+    }
+  },
+  "customers": {
+    "distributor": {
+      "products": {
+        "monitor": {
+          "price": "50.0000",
+          "transport_cost": "1.0000",
+          "demand": "4.000",
+          "lead_time": 0,
+          "patience": 0,
+          "late_penalty": "2.0000",
+          "lost_sale_penalty": "10.0000"
+        }
+      }
+    }
+  },
+  "lines": {
+    "line-1": {
+      "capacity": "10.000",
+      "wear_per_period": "0.0000",
+      "wear_per_hour": "0.0000",
+      "breakdown_chance": "0.0000",
+      "breakdown_loss": "0.0000",
+      "repair_cost": "0.0000",
+      "repair_time": "1.000",
+      "repair_limit": "1.0000",
+      "items": {
+        "board": {"time": "0.100", "cost": "1.0000", "yield": "1.0000"},
+        "monitor": {"time": "0.500", "cost": "2.0000", "yield": "1.0000"}
+      }
+    }
+  },
+  "warehouses": {"main": {"capacity": "100.000"}},
+  "cash": {
+    "credit_limit": "0.0000",
+    "credit_interest": "0.0000",
+    "debit_interest": "0.0000",
+    "overdraft_interest": "0.0000"
+  }
+}

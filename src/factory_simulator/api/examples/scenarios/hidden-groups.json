@@ -1,0 +1,49 @@
+{
+  "name": "hidden-groups",
+  "description": "Demand is multiplied by 2.5 from period 1. Base demand, supplier delivery and inspection parameters, line yield and breakdown parameters are hidden.",
+  "horizon": 52,
+  "hidden": [
+    "customers.products.demand",
+    "suppliers.catalogue.punctuality",
+    "suppliers.catalogue.delay",
+    "suppliers.catalogue.completeness",
+    "suppliers.catalogue.acceptance",
+    "lines.items.yield",
+    "lines.breakdown_chance",
+    "lines.breakdown_loss"
+  ],
+  "start": {
+    "cash": "0.0000",
+    "stock": {
+      "main-plant": {
+        "microchip": "1406.000",
+        "passive-kit": "2234.000",
+        "pcb-blank": "1656.000",
+        "lcd-panel": "295.000",
+        "connector-pins": "1554.000",
+        "copper-wire": "2823.000",
+        "plastic-resin": "415.000",
+        "steel-sheet": "1631.000",
+        "control-board": "564.000",
+        "power-module": "808.000",
+        "sensor-module": "244.000",
+        "display-unit": "290.000",
+        "enclosure": "808.000",
+        "cable-harness": "518.000"
+      },
+      "distribution-centre": {
+        "industrial-controller": "22.500",
+        "smart-monitor": "23.750",
+        "sensor-gateway": "20.000"
+      }
+    }
+  },
+  "demand_shapes": [
+    {
+      "kind": "step",
+      "target": "all",
+      "period": 1,
+      "factor": "2.5000"
+    }
+  ]
+}
