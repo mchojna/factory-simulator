@@ -1,0 +1,31 @@
+{
+  "name": "cash-squeeze",
+  "description": "The factory starts with cash of -120000, which is 40000 below its credit line, and one quarter of a period of finished products. Purchases are refused until payments for the stock it sells bring cash, less open commitments, back within the credit line.",
+  "horizon": 52,
+  "start": {
+    "cash": "-120000.0000",
+    "stock": {
+      "main-plant": {
+        "microchip": "1406.000",
+        "passive-kit": "2234.000",
+        "pcb-blank": "1656.000",
+        "lcd-panel": "295.000",
+        "connector-pins": "1554.000",
+        "copper-wire": "2823.000",
+        "plastic-resin": "415.000",
+        "steel-sheet": "1631.000",
+        "control-board": "564.000",
+        "power-module": "808.000",
+        "sensor-module": "244.000",
+        "display-unit": "290.000",
+        "enclosure": "808.000",
+        "cable-harness": "518.000"
+      },
+      "distribution-centre": {
+        "industrial-controller": "22.500",
+        "smart-monitor": "23.750",
+        "sensor-gateway": "20.000"
+      }
+    }
+  }
+}

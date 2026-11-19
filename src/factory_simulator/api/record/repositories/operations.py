@@ -1,0 +1,296 @@
+"""The rows of operations: create, append bodies, write, finish and recover.
+
+Examples:
+    >>> operation_time().endswith("+00:00")
+    True
+"""
+
+import hashlib
+import uuid
+from datetime import UTC, datetime
+from traceback import format_exception
+
+from sqlalchemy import Engine, select
+from sqlalchemy.orm import Session, load_only
+
+from factory_simulator.api.record.models.manifest import Manifest
+from factory_simulator.api.record.models.operation import (
+    Operation,
+    OperationBody,
+    OperationIdentity,
+)
+from factory_simulator.api.record.models.run import Run
+from factory_simulator.api.record.models.scenario import Scenario
+
+BODY_CHUNK_SIZE = 65536
+
+
+def create_operation(
+    database_engine: Engine,
+    method: str | None,
+    path: str | None,
+    correlation_id: str | None,
+    *,
+    kind: str = "http",
+    received_at: str | None = None,
+) -> Operation:
+    """Create the durable intent of a server operation.
+
+    Args:
+        database_engine (Engine): The engine of the database.
+        method (str | None): The HTTP method, absent for lifecycle work.
+        path (str | None): The requested path, absent for lifecycle work.
+        correlation_id (str | None): The supplied correlation identifier.
+        kind (str, optional): The kind: `http`, `startup` or `shutdown`; `http` when
+            not given.
+        received_at (str | None, optional): The UTC time of receipt; the current
+            time when not given.
+
+    Returns:
+        Operation: The detached intent; no connection remains checked out.
+
+    Examples:
+        >>> from factory_simulator.api.record.database import (
+        ...     create_database_engine,
+        ...     prepare,
+        ... )
+        >>> database_engine = create_database_engine(
+        ...     "duckdb:///:memory:operation_intent"
+        ... )
+        >>> prepare(database_engine, "0.1.0")
+        >>> create_operation(database_engine, "GET", "/missing", None).state
+        'received'
+    """
+    started_at = operation_time() if received_at is None else received_at
+    parts = (path or "").strip("/").split("/")
+    requested = parts[3] if len(parts) > 3 and parts[2] == "runs" else None
+    with Session(database_engine, expire_on_commit=False) as session:
+        run = (
+            session.get(Run, requested, options=[load_only(Run.id, Run.scenario_id)])
+            if requested
+            else None
+        )
+        run_id = run.id if run is not None else None
+        scenario_id = run.scenario_id if run is not None else None
+        manifest_id = None
+        if len(parts) > 3 and parts[2] == "scenarios":
+            scenario = session.get(
+                Scenario,
+                parts[3],
+                options=[load_only(Scenario.id, Scenario.manifest_id)],
+            )
+            if scenario is not None:
+                scenario_id = scenario.id
+                manifest_id = scenario.manifest_id
+        if len(parts) > 3 and parts[2] == "manifests":
+            manifest = session.get(Manifest, parts[3], options=[load_only(Manifest.id)])
+            if manifest is not None:
+                manifest_id = manifest.id
+        identity = OperationIdentity()
+        session.add(identity)
+        session.flush()
+        operation = Operation(
+            position=identity.position,
+            request_id=uuid.uuid4().hex,
+            kind=kind,
+            method=method,
+            path=path,
+            raw_path=None,
+            query=None,
+            request_headers=[],
+            response_headers=[],
+            route=None,
+            scenario_id=scenario_id,
+            manifest_id=manifest_id,
+            correlation_id=correlation_id,
+            requested_run_id=requested,
+            run_id=run_id,
+            created_run_id=None,
+            state="received",
+            status_code=None,
+            started_at=started_at,
+            generated_at=None,
+            finished_at=None,
+            recovered_at=None,
+            duration_ns=None,
+            request_bytes=None,
+            response_bytes=None,
+            request_complete=False,
+            response_generated=False,
+            headers_attempted=False,
+            headers_sent=False,
+            attempted_bytes=0,
+            sent_bytes=0,
+            exception_type=None,
+            exception_message=None,
+            exception_traceback=None,
+        )
+        session.add(operation)
+        session.commit()
+    return operation
+
+
+def append_body(
+    database_engine: Engine,
+    operation_id: int,
+    direction: str,
+    position: int,
+    body: bytes,
+) -> int:
+    r"""Append exact body chunks without retaining an unbounded copy.
+
+    Args:
+        database_engine (Engine): The engine of the database.
+        operation_id (int): The position of the operation.
+        direction (str): Request or response.
+        position (int): The last stored chunk position.
+        body (bytes): The received or generated bytes.
+
+    Returns:
+        int: The last stored chunk position after appending.
+
+    Examples:
+        >>> from factory_simulator.api.record.database import (
+        ...     create_database_engine,
+        ...     prepare,
+        ... )
+        >>> database_engine = create_database_engine("duckdb:///:memory:operation_body")
+        >>> prepare(database_engine, "0.1.0")
+        >>> operation = create_operation(database_engine, "GET", "/missing", None)
+        >>> append_body(database_engine, operation.position, "request", 0, b" \xff")
+        1
+    """
+    for offset in range(0, len(body), BODY_CHUNK_SIZE):
+        position += 1
+        chunk = body[offset : offset + BODY_CHUNK_SIZE]
+        with Session(database_engine) as session:
+            session.add(
+                OperationBody(
+                    operation_id=operation_id,
+                    direction=direction,
+                    position=position,
+                    body=chunk,
+                    digest=hashlib.sha256(chunk).hexdigest(),
+                )
+            )
+            session.commit()
+    return position
+
+
+def write_operation(database_engine: Engine, operation: Operation) -> None:
+    """Write the current facts of a detached operation in a short transaction.
+
+    Args:
+        database_engine (Engine): The engine of the database.
+        operation (Operation): The detached operation with its observed facts.
+
+    Raises:
+        RuntimeError: If the durable intent no longer exists.
+
+    Examples:
+        >>> from factory_simulator.api.record.database import (
+        ...     create_database_engine,
+        ...     prepare,
+        ... )
+        >>> database_engine = create_database_engine(
+        ...     "duckdb:///:memory:operation_finish"
+        ... )
+        >>> prepare(database_engine, "0.1.0")
+        >>> operation = create_operation(database_engine, "GET", "/missing", None)
+        >>> operation.state = "completed"
+        >>> write_operation(database_engine, operation)
+        >>> operation.state
+        'completed'
+    """
+    with Session(database_engine, expire_on_commit=False) as session:
+        stored = session.get(Operation, operation.position)
+        if stored is None:
+            raise RuntimeError("operation: durable intent is missing")
+        for column in Operation.__table__.columns:
+            setattr(stored, column.key, getattr(operation, column.key))
+        session.commit()
+
+
+def operation_time() -> str:
+    """Give the current UTC time in ISO format.
+
+    Returns:
+        str: UTC time with microseconds and explicit offset.
+
+    Examples:
+        >>> datetime.fromisoformat(operation_time()).tzinfo is UTC
+        True
+    """
+    return datetime.now(UTC).isoformat(timespec="microseconds")
+
+
+def finish_operation(
+    database_engine: Engine, operation: Operation, error: BaseException | None = None
+) -> None:
+    """Finish an operation with its observed completion or exception.
+
+    Args:
+        database_engine (Engine): The engine of the database.
+        operation (Operation): The observed operation, changed in place.
+        error (BaseException | None, optional): The observed failure; None when not
+            given.
+
+    Examples:
+        >>> from factory_simulator.api.record.database import (
+        ...     create_database_engine,
+        ...     prepare,
+        ... )
+        >>> database_engine = create_database_engine(
+        ...     "duckdb:///:memory:failed_operation"
+        ... )
+        >>> prepare(database_engine, "0.1.0")
+        >>> operation = create_operation(
+        ...     database_engine, None, None, None, kind="startup"
+        ... )
+        >>> finish_operation(database_engine, operation, RuntimeError("failed"))
+        >>> operation.state, operation.exception_message
+        ('failed', 'failed')
+    """
+    if error is not None:
+        if operation.state != "interrupted":
+            operation.state = "failed"
+        operation.exception_type = (
+            f"{type(error).__module__}.{type(error).__qualname__}"
+        )
+        operation.exception_message = str(error)
+        operation.exception_traceback = "".join(format_exception(error))
+    elif operation.state == "received":
+        operation.state = "completed"
+    operation.finished_at = operation_time()
+    write_operation(database_engine, operation)
+
+
+def recover_operations(database_engine: Engine) -> None:
+    """Recover durable unfinished intents as interrupted at server startup.
+
+    A recovery time does not supply an unobserved completion time or duration.
+
+    Args:
+        database_engine (Engine): The engine of the database.
+
+    Examples:
+        >>> from factory_simulator.api.record.database import (
+        ...     create_database_engine,
+        ...     prepare,
+        ... )
+        >>> database_engine = create_database_engine(
+        ...     "duckdb:///:memory:operation_recovery"
+        ... )
+        >>> prepare(database_engine, "0.1.0")
+        >>> operation = create_operation(database_engine, "GET", "/missing", None)
+        >>> recover_operations(database_engine)
+        >>> with Session(database_engine) as session:
+        ...     session.get(Operation, operation.position).state
+        'interrupted'
+    """
+    with Session(database_engine) as session:
+        statement = select(Operation).where(Operation.state == "received")
+        for operation in session.scalars(statement):
+            operation.state = "interrupted"
+            operation.recovered_at = operation_time()
+        session.commit()
